@@ -1,0 +1,77 @@
+10
+
+dir
+7420
+http://sourcesafe.nybblenetwork.com:8080/svn/nybble/FashionAde/trunk/FashionAde.OutfitUpdaterImportation
+http://sourcesafe.nybblenetwork.com:8080/svn/nybble
+
+
+
+2010-10-20T15:40:26.976773Z
+7089
+leonardo.rodriguez
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+420dda77-6af4-1841-a513-76830d1e3cad
+
+ClassBuilders
+dir
+
+Interfaces
+dir
+
+FashionAde.OutfitUpdaterImportation.csproj
+file
+
+
+
+
+2010-10-20T19:02:54.254771Z
+32b5224ed422bad6ec016555980e3300
+2010-10-20T15:40:26.976773Z
+7089
+leonardo.rodriguez
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4490
+
+Controllers
+dir
+
+Core
+dir
+
+Properties
+dir
+

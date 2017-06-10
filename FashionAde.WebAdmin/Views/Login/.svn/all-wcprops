@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nybble/!svn/ver/7093/FashionAde/trunk/FashionAde.WebAdmin/Views/Login
+END
+Index.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/nybble/!svn/ver/3936/FashionAde/trunk/FashionAde.WebAdmin/Views/Login/Index.aspx
+END
+ChangePassword.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/nybble/!svn/ver/7093/FashionAde/trunk/FashionAde.WebAdmin/Views/Login/ChangePassword.aspx
+END
+PasswordChanged.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/nybble/!svn/ver/7093/FashionAde/trunk/FashionAde.WebAdmin/Views/Login/PasswordChanged.aspx
+END

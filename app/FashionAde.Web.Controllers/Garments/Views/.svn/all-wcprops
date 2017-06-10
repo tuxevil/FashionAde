@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/nybble/!svn/ver/5379/FashionAde/trunk/app/FashionAde.Web.Controllers/Garments/Views
+END
+SilouhetteSelection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/nybble/!svn/ver/4978/FashionAde/trunk/app/FashionAde.Web.Controllers/Garments/Views/SilouhetteSelection.cs
+END
+WebGarmentDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/nybble/!svn/ver/4980/FashionAde/trunk/app/FashionAde.Web.Controllers/Garments/Views/WebGarmentDetails.cs
+END
+UserGarmentSelection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/nybble/!svn/ver/5379/FashionAde/trunk/app/FashionAde.Web.Controllers/Garments/Views/UserGarmentSelection.cs
+END
+Selection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/nybble/!svn/ver/4978/FashionAde/trunk/app/FashionAde.Web.Controllers/Garments/Views/Selection.cs
+END
+GarmentsListData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/nybble/!svn/ver/5369/FashionAde/trunk/app/FashionAde.Web.Controllers/Garments/Views/GarmentsListData.cs
+END
+jsonGarment.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/nybble/!svn/ver/5060/FashionAde/trunk/app/FashionAde.Web.Controllers/Garments/Views/jsonGarment.cs
+END
+Coords.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/nybble/!svn/ver/5369/FashionAde/trunk/app/FashionAde.Web.Controllers/Garments/Views/Coords.cs
+END

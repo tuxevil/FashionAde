@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/nybble/!svn/ver/7313/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits/Views
+END
+OutfitResume.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/nybble/!svn/ver/7092/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits/Views/OutfitResume.cs
+END
+UserOutfitSelection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/nybble/!svn/ver/4978/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits/Views/UserOutfitSelection.cs
+END
+OutfitSearch.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/nybble/!svn/ver/7313/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits/Views/OutfitSearch.cs
+END
+PublicClosetView.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/nybble/!svn/ver/7092/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits/Views/PublicClosetView.cs
+END
+OutfitNotate.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/nybble/!svn/ver/4978/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits/Views/OutfitNotate.cs
+END
+OutfitView.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/nybble/!svn/ver/7092/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits/Views/OutfitView.cs
+END
+OutfitRate.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/nybble/!svn/ver/4978/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits/Views/OutfitRate.cs
+END
+jsonLayer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/nybble/!svn/ver/5369/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits/Views/jsonLayer.cs
+END
+FriendRatingView.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/nybble/!svn/ver/7092/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits/Views/FriendRatingView.cs
+END
+InviteFriends.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/nybble/!svn/ver/4978/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits/Views/InviteFriends.cs
+END
+OutfitUpdaterView.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/nybble/!svn/ver/5399/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits/Views/OutfitUpdaterView.cs
+END

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/nybble/!svn/ver/3674/FashionAde/trunk/app/FashionAde.Core/OutfitCombination
+END
+_outfits.cd
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/nybble/!svn/ver/2844/FashionAde/trunk/app/FashionAde.Core/OutfitCombination/_outfits.cd
+END
+Combination.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/nybble/!svn/ver/3469/FashionAde/trunk/app/FashionAde.Core/OutfitCombination/Combination.cs
+END
+CombinationStatus.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/nybble/!svn/ver/2997/FashionAde/trunk/app/FashionAde.Core/OutfitCombination/CombinationStatus.cs
+END
+UserOutfit.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/nybble/!svn/ver/3674/FashionAde/trunk/app/FashionAde.Core/OutfitCombination/UserOutfit.cs
+END
+CombinationVisibility.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/nybble/!svn/ver/3469/FashionAde/trunk/app/FashionAde.Core/OutfitCombination/CombinationVisibility.cs
+END

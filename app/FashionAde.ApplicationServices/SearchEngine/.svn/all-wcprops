@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/nybble/!svn/ver/7408/FashionAde/trunk/app/FashionAde.ApplicationServices/SearchEngine
+END
+SearchEngineExtensions.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/nybble/!svn/ver/7307/FashionAde/trunk/app/FashionAde.ApplicationServices/SearchEngine/SearchEngineExtensions.cs
+END
+SearchEngineService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/nybble/!svn/ver/7307/FashionAde/trunk/app/FashionAde.ApplicationServices/SearchEngine/SearchEngineService.cs
+END
+SearchEngineEntry.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/nybble/!svn/ver/7307/FashionAde/trunk/app/FashionAde.ApplicationServices/SearchEngine/SearchEngineEntry.cs
+END
+IndexCreationService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/nybble/!svn/ver/7408/FashionAde/trunk/app/FashionAde.ApplicationServices/SearchEngine/IndexCreationService.cs
+END
+IndexingError.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/nybble/!svn/ver/6024/FashionAde/trunk/app/FashionAde.ApplicationServices/SearchEngine/IndexingError.cs
+END
+IIndexCreationService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/nybble/!svn/ver/7369/FashionAde/trunk/app/FashionAde.ApplicationServices/SearchEngine/IIndexCreationService.cs
+END
+SearchEngineResponse.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/nybble/!svn/ver/6025/FashionAde/trunk/app/FashionAde.ApplicationServices/SearchEngine/SearchEngineResponse.cs
+END
+SearchEngineResult.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/nybble/!svn/ver/6039/FashionAde/trunk/app/FashionAde.ApplicationServices/SearchEngine/SearchEngineResult.cs
+END

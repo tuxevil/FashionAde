@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1A214C0E-B4F6-4F91-9878-2BBC34341C66}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FashionAde.Web.Controllers</RootNamespace>
+    <AssemblyName>FashionAde.Web.Controllers</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\sharp-architecture\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\sharp-architecture\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcContrib, Version=0.0.1.96, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\sharp-architecture\MvcContrib.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Validator, Version=1.0.0.4000, Culture=neutral, PublicKeyToken=70154e18752585bd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\sharp-architecture\NHibernate.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\sharp-architecture\SharpArch.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\System.Web.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\sharp-architecture\System.Web.Routing.dll</HintPath>
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\AccountValidationController.cs" />
+    <Compile Include="Account\InvitationController.cs" />
+    <Compile Include="Account\Views\Invitation.cs" />
+    <Compile Include="Account\Views\UserAnswer.cs" />
+    <Compile Include="Account\Views\UserEmail.cs" />
+    <Compile Include="Account\Views\UserFull.cs" />
+    <Compile Include="Account\Views\UserLogin.cs" />
+    <Compile Include="Account\Views\UserPassword.cs" />
+    <Compile Include="Account\Views\UserUpdate.cs" />
+    <Compile Include="Base\AntiForgeryToken.cs" />
+    <Compile Include="Base\HandleErrorAttribute.cs" />
+    <Compile Include="Base\RssActionResult.cs" />
+    <Compile Include="Base\RegisterTrackingAttribute.cs" />
+    <Compile Include="Base\SslAttributes.cs" />
+    <Compile Include="Base\UserData.cs" />
+    <Compile Include="Base\UserDataHelper.cs" />
+    <Compile Include="BuildYourCloset\BuildYourClosetController.cs" />
+    <Compile Include="BuildYourCloset\BuildYourClosetStateManager.cs" />
+    <Compile Include="BuildYourCloset\FlavorChangeController.cs" />
+    <Compile Include="BuildYourCloset\FlavorSelectController.cs" />
+    <Compile Include="BuildYourCloset\EventTypeSelectorController.cs" />
+    <Compile Include="BuildYourCloset\FlavorWeightController.cs" />
+    <Compile Include="ContactUs\ContactUsController.cs" />
+    <Compile Include="Account\EmailConfirmationController.cs" />
+    <Compile Include="Base\CustomOutputCacheAttribute.cs" />
+    <Compile Include="Friends\FriendBetaInvitationController.cs" />
+    <Compile Include="Garments\GarmentSelectorController.cs" />
+    <Compile Include="BuildYourCloset\RegistrationController.cs" />
+    <Compile Include="BaseController.cs" />
+    <Compile Include="Friends\ContactController.cs" />
+    <Compile Include="Account\AccountController.cs" />
+    <Compile Include="Friends\FriendController.cs" />
+    <Compile Include="Friends\Views\BetaInvitation.cs" />
+    <Compile Include="Friends\Views\ContactView.cs" />
+    <Compile Include="ContactUs\Views\FeedBack.cs" />
+    <Compile Include="Account\Views\ForgotPasswordView.cs" />
+    <Compile Include="Outfits\Views\OutfitUpdaterView.cs" />
+    <Compile Include="Garments\Views\UserGarmentSelection.cs" />
+    <Compile Include="Outfits\Views\FriendRatingView.cs" />
+    <Compile Include="Outfits\Views\OutfitResume.cs" />
+    <Compile Include="Friends\Views\FriendsData.cs" />
+    <Compile Include="Home\HomeRegisteredUserInfo.cs" />
+    <Compile Include="Referrer\ReferrerController.cs" />
+    <Compile Include="WishList\Views\WishListSelection.cs" />
+    <Compile Include="Outfits\Views\PublicClosetView.cs" />
+    <Compile Include="Garments\Views\GarmentsListData.cs" />
+    <Compile Include="Content\Views\InternalPromotion.cs" />
+    <Compile Include="Content\ContentController.cs" />
+    <Compile Include="Outfits\Views\OutfitView.cs" />
+    <Compile Include="Garments\MyGarmentsDetailController.cs" />
+    <Compile Include="Outfits\OutfitCreationController.cs" />
+    <Compile Include="Outfits\MyOutfitsController.cs" />
+    <Compile Include="Outfits\OutfitUpdatersController.cs" />
+    <Compile Include="Quiz\FlavorQuizController.cs" />
+    <Compile Include="Content\StyleAlertsController.cs" />
+    <Compile Include="Outfits\OtherOutfitsController.cs" />
+    <Compile Include="Account\LoginController.cs" />
+    <Compile Include="Home\HomeController.cs" />
+    <Compile Include="Garments\Views\Coords.cs" />
+    <Compile Include="Outfits\Views\jsonLayer.cs" />
+    <Compile Include="Outfits\Views\InviteFriends.cs" />
+    <Compile Include="Outfits\Views\OutfitNotate.cs" />
+    <Compile Include="Outfits\Views\UserOutfitSelection.cs" />
+    <Compile Include="Garments\Views\jsonGarment.cs" />
+    <Compile Include="Outfits\Views\OutfitRate.cs" />
+    <Compile Include="Outfits\Views\OutfitSearch.cs" />
+    <Compile Include="Base\Resources.cs" />
+    <Compile Include="Garments\Views\Selection.cs" />
+    <Compile Include="Garments\Views\SilouhetteSelection.cs" />
+    <Compile Include="BuildYourCloset\Views\UserRegistration.cs" />
+    <Compile Include="Garments\Views\WebGarmentDetails.cs" />
+    <Compile Include="Garments\MyGarmentsController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quiz\QuizController.cs" />
+    <Compile Include="Outfits\RatingController.cs" />
+    <Compile Include="RouteRegistrar.cs" />
+    <Compile Include="Garments\UploadGarmentController.cs" />
+    <Compile Include="WishList\WishListController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ContactProvider\ContactProvider.csproj">
+      <Project>{588AB897-9D3C-47E9-BE9C-6D9154372084}</Project>
+      <Name>ContactProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FashionAde.OutfitUpdaterImportation\FashionAde.OutfitUpdaterImportation.csproj">
+      <Project>{765D4A13-603D-4C24-A68F-0E040EB855B6}</Project>
+      <Name>FashionAde.OutfitUpdaterImportation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FashionAde.Tracking\FashionAde.Tracking.csproj">
+      <Project>{733C4C31-C881-4C63-AE88-2CD10CFF6B2B}</Project>
+      <Name>FashionAde.Tracking</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FashionAde.Web.Common\FashionAde.Web.Common.csproj">
+      <Project>{982FFF44-06D3-40A9-8B81-71B8A6EDA58F}</Project>
+      <Name>FashionAde.Web.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FashionAde.Core\FashionAde.Core.csproj">
+      <Project>{26375851-E958-47FE-B328-B7CF26DFD684}</Project>
+      <Name>FashionAde.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FashionAde.ApplicationServices\FashionAde.ApplicationServices.csproj">
+      <Project>{08E9C4A6-6086-4D9E-8D27-41D4159CF95F}</Project>
+      <Name>FashionAde.ApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FashionAde.Data\FashionAde.Data.csproj">
+      <Project>{4ADD3200-7AA6-4D85-A02A-2D22D839B42F}</Project>
+      <Name>FashionAde.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FashionAde.Utils\FashionAde.Utils.csproj">
+      <Project>{06B4EBD9-5FFE-451F-8022-D84868B470E1}</Project>
+      <Name>FashionAde.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FashionAde.Web.Common\FashionAde.Web.Common.csproj">
+      <Project>{982FFF44-06D3-40A9-8B81-71B8A6EDA58F}</Project>
+      <Name>FashionAde.Web.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MVCInteraction\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

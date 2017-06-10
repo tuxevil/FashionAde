@@ -1,0 +1,47 @@
+﻿<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-access="property" auto-import="true" default-cascade="none" default-lazy="true">
+  <class xmlns="urn:nhibernate-mapping-2.2" name="FashionAde.Core.ClosetOutfit, FashionAde.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" table="ClosetOutfits">
+    <id name="Id" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ClosetOutfitId" />
+      <generator class="hilo">
+        <param name="table">closetoutfits_unique_key</param>
+        <param name="column">next_hi</param>
+        <param name="max_lo">500</param>
+      </generator>
+    </id>
+    <component name="Rating" insert="true" update="true" optimistic-lock="true">
+      <property name="MyRating" type="System.Single, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="Rating_MyRating" not-null="true" />
+      </property>
+      <property name="FriendRatingAverage" type="System.Single, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="Rating_FriendRatingAverage" not-null="true" />
+      </property>
+      <bag cascade="save-update" name="friendRatings">
+        <key>
+          <column name="RatingId" />
+        </key>
+        <one-to-many class="FashionAde.Core.FriendRating, FashionAde.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      </bag>
+      <bag cascade="save-update" name="userRatings">
+        <key>
+          <column name="RatingId" />
+        </key>
+        <one-to-many class="FashionAde.Core.UserRating, FashionAde.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      </bag>
+    </component>
+    <property name="IsFavouriteOutfit" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="IsFavouriteOutfit" not-null="true" />
+    </property>
+    <bag cascade="save-update" name="Details">
+      <key>
+        <column name="ClosetOutfitId" />
+      </key>
+      <one-to-many class="FashionAde.Core.OutfitDetails, FashionAde.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <many-to-one class="FashionAde.Core.OutfitCombination.Outfit, FashionAde.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Outfit">
+      <column name="OutfitId" index="OutfitIndex" />
+    </many-to-one>
+    <many-to-one class="FashionAde.Core.Closet, FashionAde.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Closet">
+      <column name="ClosetId" index="ClosetIndex" />
+    </many-to-one>
+  </class>
+</hibernate-mapping>

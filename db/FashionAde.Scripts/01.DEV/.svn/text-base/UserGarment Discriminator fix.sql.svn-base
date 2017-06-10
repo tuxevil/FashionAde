@@ -1,0 +1,1 @@
+﻿update garments set Type = 2 where garmentid in (select garmentid from usergarment) 

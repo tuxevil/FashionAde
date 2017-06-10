@@ -1,0 +1,1 @@
+﻿update categories set description = 'Tops' where description = 'Shirts' 

@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/4985/FashionAde/trunk/db/FashionAde.Scripts/03.PRD
+END
+MIGRATE DATA.sql
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/nybble/!svn/ver/4985/FashionAde/trunk/db/FashionAde.Scripts/03.PRD/MIGRATE%20DATA.sql
+END
+SecurityQuestionUpdate.sql
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/nybble/!svn/ver/4985/FashionAde/trunk/db/FashionAde.Scripts/03.PRD/SecurityQuestionUpdate.sql
+END
+EmailChangeModification.sql
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/nybble/!svn/ver/4890/FashionAde/trunk/db/FashionAde.Scripts/03.PRD/EmailChangeModification.sql
+END
+New update for security question.sql
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/nybble/!svn/ver/4985/FashionAde/trunk/db/FashionAde.Scripts/03.PRD/New%20update%20for%20security%20question.sql
+END
+RecomendationContentUpdate.sql
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/nybble/!svn/ver/4904/FashionAde/trunk/db/FashionAde.Scripts/03.PRD/RecomendationContentUpdate.sql
+END
+Update of Garment 0.sql
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/nybble/!svn/ver/4985/FashionAde/trunk/db/FashionAde.Scripts/03.PRD/Update%20of%20Garment%200.sql
+END
+COLORS FIX.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/nybble/!svn/ver/4985/FashionAde/trunk/db/FashionAde.Scripts/03.PRD/COLORS%20FIX.sql
+END
+CLEAR DATABASE.sql
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/nybble/!svn/ver/4985/FashionAde/trunk/db/FashionAde.Scripts/03.PRD/CLEAR%20DATABASE.sql
+END
+UpdateForEventTypes.sql
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/nybble/!svn/ver/4890/FashionAde/trunk/db/FashionAde.Scripts/03.PRD/UpdateForEventTypes.sql
+END
+Check Mig Seasons and Event Types.sql
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/nybble/!svn/ver/4985/FashionAde/trunk/db/FashionAde.Scripts/03.PRD/Check%20Mig%20Seasons%20and%20Event%20Types.sql
+END

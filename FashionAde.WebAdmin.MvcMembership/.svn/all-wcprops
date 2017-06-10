@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/nybble/!svn/ver/5570/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership
+END
+IPasswordService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/IPasswordService.cs
+END
+EnumerableToEnumerableTConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/EnumerableToEnumerableTConverter.cs
+END
+IRolesService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/IRolesService.cs
+END
+FashionAde.WebAdmin.MvcMembership.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/nybble/!svn/ver/5570/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/FashionAde.WebAdmin.MvcMembership.csproj
+END
+AspNetMembershipProviderWrapper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/nybble/!svn/ver/5570/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/AspNetMembershipProviderWrapper.cs
+END
+AspNetRoleProviderWrapper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/AspNetRoleProviderWrapper.cs
+END
+IUserService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/nybble/!svn/ver/5570/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/IUserService.cs
+END

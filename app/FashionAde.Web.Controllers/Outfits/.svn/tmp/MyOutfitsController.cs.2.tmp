@@ -1,0 +1,806 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.UI.HtmlControls;
+using FashionAde.ApplicationServices.SearchEngine;
+using FashionAde.Core.DataInterfaces;
+using FashionAde.Core.Accounts;
+using FashionAde.Core;
+using FashionAde.Core.ThirdParties;
+using FashionAde.Core.Trends;
+using FashionAde.Utils;
+using FashionAde.Web.Controllers.MVCInteraction;
+using SharpArch.Web.NHibernate;
+using FashionAde.Core.UserCloset;
+using FashionAde.Core.Clothing;
+using FashionAde.Core.Views;
+using FashionAde.Web.Common;
+using FashionAde.ApplicationServices;
+using System.Globalization;
+using System.Web.Security;
+using FashionAde.Core.Services;
+using FashionAde.Tracking;
+
+namespace FashionAde.Web.Controllers
+{
+    public class MyOutfitsController : BaseController
+    {
+        private IFriendRepository friendRepository;
+        private IClosetOutfitRepository closetOutfitRepository;
+        private IClosetRepository closetRepository;
+        private IFriendRatingInvitationRepository friendRatingInvitationRepository;
+        private IRegisteredUserRepository registeredUserRepository;
+        private IContentService contentService;
+        private IMessageSenderService messageSenderService;
+        private IOutfitUpdaterRepository outfitUpdaterRepository;
+        private IPatternRepository patterRepository;
+        private ICategoryRepository categoryRepository;
+        private ITrendRepository trendRepository;
+        private IColorRepository colorRepository;
+        private ISavedFilterRepository savedFilterRepository;
+        private const string SEARCH_TEXT = "Garment Search";
+        private const string NOTREND = "--Select Trend--";
+        private const string NOCATEGORY = "--Select Category--";
+        
+        public MyOutfitsController(IFriendRepository friendRepository, IClosetOutfitRepository closetOutfitRepository, IFriendRatingInvitationRepository friendRatingInvitationRepository, IRegisteredUserRepository registeredUserRepository, IContentService contentService, IClosetRepository closetRepository, IMessageSenderService messageSenderService, IOutfitUpdaterRepository outfitUpdaterRepository, IPatternRepository patternRepository, ICategoryRepository categoryRepository, ITrendRepository trendRepository, IColorRepository colorRepository, ISavedFilterRepository savedFilterRepository)
+        {
+            this.friendRepository = friendRepository;
+            this.friendRatingInvitationRepository = friendRatingInvitationRepository;
+            this.closetOutfitRepository = closetOutfitRepository;
+            this.registeredUserRepository = registeredUserRepository;
+            this.closetRepository = closetRepository;
+            this.messageSenderService = messageSenderService;
+            this.contentService = contentService;
+            this.outfitUpdaterRepository = outfitUpdaterRepository;
+            this.patterRepository = patternRepository;
+            this.categoryRepository = categoryRepository;
+            this.trendRepository = trendRepository;
+            this.colorRepository = colorRepository;
+            this.savedFilterRepository = savedFilterRepository;
+        }
+
+        [Authorize]
+        public ActionResult GetFriends(string q, int limit)
+        {
+            RegisteredUser user = this.ProxyLoggedUser;
+            IList<Friend> lst = friendRepository.Search(user, q, FriendStatus.Confirmed, limit);
+            string[] tmp = new string[lst.Count];
+            int i = 0;
+            foreach (Friend friend in lst)
+            {
+                tmp[i] = friend.User.FirstName + " " + friend.User.LastName + "|" + friend.User.EmailAddress;
+                i++;
+            }
+
+            JsonResult jr = Json(string.Join("\n", tmp));
+            jr.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+            return jr;
+        }
+
+        private bool IsSameUser(int userId)
+        {
+            MembershipUser mu = Membership.GetUser();
+            RegisteredUser user;
+            if (mu != null)
+            {
+                user = registeredUserRepository.GetByMembershipId(Convert.ToInt32(mu.ProviderUserKey));
+                if (user != null)
+                    return user.Id == userId;
+            }
+            return false;
+        }
+
+        public ActionResult OutfitResume(int outfitId)
+        {
+            ClosetOutfitView closetOutfitView = closetOutfitRepository.GetByClosetOutfitId(outfitId);
+            OutfitResume or = new OutfitResume();
+            or.OutfitView = closetOutfitView;
+            if(UserId == closetOutfitView.ClosetOutfit.Closet.User.Id)
+                or.GetRatings();
+
+            if (or.OutfitView == null)
+                return RedirectToAction("Index", "Home");
+
+            BasicUser user = null;
+            if (User.Identity.IsAuthenticated)
+                user = registeredUserRepository.Get(this.UserId);
+
+            if (!AccessClosetService.CanViewClosetOutfit(user, or.OutfitView.ClosetOutfit))
+                throw new NotPublicClosetException();
+
+            or.OutfitView.Disabled = (this.ProxyCloset == null || or.OutfitView.ClosetOutfit.Closet.Id != this.ProxyCloset.Id);
+            or.OutfitView.SendToFriends = !or.OutfitView.Disabled;
+
+            or.UserClosetUrl = (or.OutfitView.Disabled)
+                                        ? Url.Action("PublicCloset", "MyOutfits", new { username = or.OutfitView.ClosetOutfit.Closet.User.UserName })
+                                        : Url.Action("Index", "MyOutfits");
+
+            bool isFavoriteOutfit = (closetOutfitView.ClosetOutfit.Closet.FavoriteOutfit != null 
+                                    && closetOutfitView.ClosetOutfit.Closet.FavoriteOutfit.Id == outfitId) 
+                                        ? true 
+                                        : false;
+
+            or.OutfitView.ClosetOutfit.IsFavouriteOutfit = isFavoriteOutfit;
+
+            if (user != null && !IsSameUser(closetOutfitView.ClosetOutfit.Closet.User.Id))
+            {
+                or.OutfitView.Disabled = true;
+                or.OutfitView.ShowAddToMyCloset = !IsSameUser(closetOutfitView.ClosetOutfit.Closet.User.Id);
+                or.OutfitView.SendToFriends = IsSameUser(closetOutfitView.ClosetOutfit.Closet.User.Id);
+            }
+
+            if (or.OutfitView.OutfitUpdater == null)
+                or.OutfitView.OutfitUpdater = outfitUpdaterRepository.Get(ConfigurationManager.AppSettings["DefaultOU"]);
+            //We need to be able to track the number of impressiones (views) of an outfit updaters.
+            if (or.OutfitView.OutfitUpdater != null)
+                TrackingHelper.SaveOutfitUpdaterInfo(or.OutfitView.OutfitUpdater.Id.ToString(),
+                                                     or.OutfitView.ClosetOutfitId.ToString());
+            
+            return View(or);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        [Authorize]
+        public ActionResult Index()
+        {
+            OutfitSearch search = new OutfitSearch();
+            search.SortBy = "1";
+            search.Search = SEARCH_TEXT;
+            search.Page = "1";
+            search.Season = SeasonHelper.CurrentSeasonId;
+            search.PageSize = "25";
+            search.SeasonName = SeasonHelper.CurrentSeason.ToString();
+            return View("Index", BuildOutfitView(search, this.UserId));
+        }
+
+        [ObjectFilter(Param = "outfitSearch", RootType = typeof(OutfitSearch))]
+        public JsonResult GetResults(OutfitSearch outfitSearch)
+        {
+            OutfitView ov = BuildOutfitView(outfitSearch, this.UserId);
+            if (ov.Outfits.Count == 0)
+            {
+                outfitSearch.Page = "1";
+                ov = BuildOutfitView(outfitSearch, this.UserId);
+            }
+            
+            return Json(new OutfitViewLight(ov));
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult PublicCloset(string userName)
+        {
+            if (!IsPublicCloset(userName))
+                throw new NotPublicClosetException();
+
+            int? userId = GetUserId(userName);
+            if (IsUserCloset(userId))
+                return RedirectToAction("Index");
+
+            OutfitSearch search = new OutfitSearch();
+            search.SortBy = "1";
+            search.Search = SEARCH_TEXT;
+            search.Page = "1";
+            search.Season = SeasonHelper.CurrentSeasonId;
+            search.SeasonName = SeasonHelper.CurrentSeason.ToString();
+            search.PageSize = "25";
+            OutfitView ov = BuildOutfitView(search, userId);
+            ov.Search.Public = true;
+            return View("Index", ov);
+        }
+
+        [ObjectFilter(Param = "outfitSearch", RootType = typeof(OutfitSearch))]
+        public JsonResult GetResultPublicCloset(OutfitSearch outfitSearch)
+        {
+            if (!IsPublicCloset(outfitSearch.Username))
+                throw new NotPublicClosetException();
+
+            int? userId = GetUserId(outfitSearch.Username);
+            OutfitView ov = BuildOutfitView(outfitSearch, userId.Value);
+            ov.Search.Public = true;
+            return Json(new OutfitViewLight(ov));
+        }
+
+        private bool ShowAsPublicCloset(int? userId)
+        {
+            if (userId.HasValue)
+            {
+                RegisteredUser user = registeredUserRepository.Get(userId.Value);
+                MembershipUser mu = Membership.GetUser();
+                if (mu != null && Convert.ToInt32(mu.ProviderUserKey) == user.MembershipUserId)
+                    return false;
+
+                return true;
+            }
+            return false;
+        }
+
+
+        private OutfitView BuildOutfitView(OutfitSearch outfitSearch, int? userId)
+        {
+            int totalCount;
+            string originalSearch = outfitSearch.Search;
+
+            bool showAsPublicCloset = ShowAsPublicCloset(userId);
+            RegisteredUser user = (showAsPublicCloset)
+                                ? registeredUserRepository.Get(userId.Value)
+                                : registeredUserRepository.Get(this.ProxyLoggedUser.Id);
+
+            BasicUser currentUser = null;
+            if (User.Identity.IsAuthenticated)
+                currentUser = registeredUserRepository.Get(this.UserId);
+
+            if (!AccessClosetService.CanViewCloset(currentUser, user.Closet))
+                throw new NotPublicClosetException();
+
+            if (originalSearch == SEARCH_TEXT)
+                outfitSearch.Search = string.Empty;
+
+            GetOutfitsInfo(showAsPublicCloset);
+
+            IList<ClosetOutfitView> lstResults = new List<ClosetOutfitView>();
+            lstResults = this.Search(out totalCount, outfitSearch, user);
+            string userName = Membership.GetUser(user.MembershipUserId).UserName;
+
+            OutfitView ov = new OutfitView();
+            ov.Search = new OutfitSearch();
+            if (showAsPublicCloset)
+            {
+                ov.StyleAlerts = contentService.GetRandomStyleAlerts();
+                foreach (ClosetOutfitView cov in lstResults)
+                {
+                    cov.Disabled = true;
+                    cov.ShowAddToMyCloset = true;
+                    cov.SendToFriends = false;
+                }
+                userName += "'s Outfits";
+            }
+            else
+                ov.StyleAlerts = contentService.GetRandomStyleAlerts((IList<FashionFlavor>)ViewData["fashionFlavors"]);
+
+            ov.FilterText = originalSearch;
+            ov.Closet = user.Closet;
+            ov.UserName = userName;
+            ov.Outfits = lstResults;
+            ov.TotalOutfits = totalCount;
+            ov.Season = outfitSearch.Season;
+            ov.PrivacyLevel = user.Closet.PrivacyLevel.ToString();
+            ov.CurrentPage = outfitSearch.Page;
+            ov.ShowAsPublicCloset = showAsPublicCloset;
+            ov.Search.ShowAsPublicCloset = showAsPublicCloset;
+            ov.Search.Patterns = patterRepository.GetAll() as List<Pattern>;
+            ov.Search.Categories = new List<SelectListItem>();
+            SelectListItem noCategory = new SelectListItem();
+            noCategory.Text = NOCATEGORY;
+            noCategory.Value = "0";
+            ov.Search.Categories.Add(noCategory);
+            ov.Search.Categories.AddRange(GetCategorySelectListItemList(categoryRepository.GetAll()));
+            ov.Search.Trends = new List<SelectListItem>();
+            SelectListItem noTrend = new SelectListItem();
+            noTrend.Text = NOTREND;
+            noTrend.Value = "0";
+            ov.Search.Trends.Add(noTrend);
+            ov.Search.Trends.AddRange(GetTrendSelectListItemList(trendRepository.GetCurrentTrends()));
+            ov.Search.Colors = colorRepository.GetAll() as List<Color>;
+            ov.Search.Page = outfitSearch.Page;
+            ov.Search.Season = outfitSearch.Season;
+            ov.Search.SeasonName = outfitSearch.SeasonName;
+            ov.Search.EventTypes = new List<SelectListItem>();
+            foreach (EventType eventType in user.EventTypes)
+            {
+                SelectListItem item = new SelectListItem();
+                item.Text = eventType.Description;
+                item.Value = eventType.Id.ToString();
+                ov.Search.EventTypes.Add(item);
+            }
+            ov.Search.Flavors = new List<SelectListItem>();
+            foreach (UserFlavor userFlavor in user.UserFlavors)
+            {
+                SelectListItem item = new SelectListItem();
+                item.Text = userFlavor.Flavor.Name;
+                item.Value = userFlavor.Flavor.Id.ToString();
+                ov.Search.Flavors.Add(item);
+            }
+            ov.Search.SavedFilters = savedFilterRepository.GetAllFor(UserId) as List<SavedFilter>;
+
+            if(user.Closet.FavoriteOutfit != null)
+            {
+                ClosetOutfitView couv = closetOutfitRepository.GetByClosetOutfitId(ov.FavoriteOutfitId);
+                if (couv != null)
+                {
+                    ov.FavoriteOutfitId = user.Closet.FavoriteOutfit.Id;
+                    ov.FavoriteOutfit = couv.ShortEventTypes + ov.FavoriteOutfitId;
+                }  
+            }
+            else
+                ov.FavoriteOutfit = "None Selected";
+
+
+            ViewData["procesingCloset"] = user.Closet.CreationStatus == ClosetGarmentStatus.Pending && IsSameUser(user.Id);
+            ViewData["userId"] = user.Id;
+            ViewData["closetUserId"] = user.MembershipUserId;
+            ov.Pager = PagingHelper.Paging(totalCount, Convert.ToInt32(outfitSearch.Page), Convert.ToInt32(outfitSearch.PageSize), 6);
+            ViewData["Pages"] = ov.Pager;
+            //TODO: Hacer modificable este seteo
+            ViewData["StyleAlertsStep"] = 5;
+
+            foreach (ClosetOutfitView cov in lstResults)
+            {
+                if (cov.OutfitUpdater == null)
+                    cov.OutfitUpdater = outfitUpdaterRepository.Get(ConfigurationManager.AppSettings["DefaultOU"]);
+
+                //We also need to be able to obtain the number of impressiones (views) of an outfit updaters.
+                TrackingHelper.SaveOutfitUpdaterInfo(cov.OutfitUpdater.Id.ToString(), cov.ClosetOutfitId.ToString());
+            }
+            ov.Search.Public = false;
+
+            return ov;
+        }
+
+        private List<SelectListItem> GetCategorySelectListItemList(IList<Category> lst)
+        {
+            List<SelectListItem> result = new List<SelectListItem>();
+
+            foreach (Category category in lst)
+            {
+                SelectListItem item = new SelectListItem();
+                item.Text = category.Description;
+                item.Value = category.Id.ToString();
+                result.Add(item);
+            }
+            return result;
+        }
+
+        private List<SelectListItem> GetTrendSelectListItemList(IList<Trend> lst)
+        {
+            List<SelectListItem> result = new List<SelectListItem>();
+
+            foreach (Trend trend in lst)
+            {
+                SelectListItem item = new SelectListItem();
+                item.Text = trend.Name;
+                item.Value = trend.Id.ToString();
+                result.Add(item);
+            }
+            return result;
+        }
+
+        [ObjectFilter(Param = "outfitSelected", RootType = typeof(int))]
+        [Transaction]
+        [Authorize]
+        public ActionResult RemoveOutfitFromCloset(int outfitSelected)
+        {
+            ClosetOutfit outfit = closetOutfitRepository.Get(outfitSelected);
+            outfit.SendToColdStorage();
+            closetOutfitRepository.SaveOrUpdate(outfit);
+
+            if (outfit.Closet.FavoriteOutfit == outfit)
+                outfit.Closet.ClearFavoriteOutfit();
+            closetRepository.SaveOrUpdate(outfit.Closet);
+
+            using (SearchEngineService ses = SearchEngineService.GetByCloset(ClosetId))
+            {
+                ses.RemovePost(outfitSelected);
+            }
+
+            return Json(new { Success = true });
+        }
+
+        [ObjectFilter(Param = "outfitNotate", RootType = typeof(OutfitNotate))]
+        [Transaction]
+        [Authorize]
+        public ActionResult AddNotateToCloset(OutfitNotate outfitNotate)
+        {
+            ClosetOutfit outfit = closetOutfitRepository.Get(outfitNotate.OutfitSelected);
+            if (StringHelper.IsDateTime(outfitNotate.WornDate))
+            {
+                IFormatProvider formatProvider = new CultureInfo("en-US");
+                outfit.Notate(outfitNotate.Location, Convert.ToDateTime(outfitNotate.WornDate, formatProvider));
+                if (outfit.Detail == null)
+                {
+                    outfit.Detail = new MaxOutfitDetail();
+                    outfit.Detail.ClosetOutfit = outfit;
+                }
+                if (outfit.Detail.WornDate < Convert.ToDateTime(outfitNotate.WornDate, formatProvider))
+                {
+                    outfit.Detail.WornDate = Convert.ToDateTime(outfitNotate.WornDate, formatProvider);
+                    outfit.Detail.Location = outfitNotate.Location;
+                }
+                else
+                {
+                    outfitNotate.Location = outfit.Detail.Location;
+                    outfitNotate.WornDate = outfit.Detail.WornDate.ToString("MM/dd/yyyy");
+                }
+
+                closetOutfitRepository.SaveOrUpdate(outfit);
+
+                // Update index on notate...
+                using (SearchEngineService ses = SearchEngineService.GetByCloset(ClosetId))
+                    ses.AddEntry(outfit.ToSearchEngineEntry());
+
+                return Json(new { Success = true, outfitNotate.WornDate, outfitNotate.Location });
+            }
+
+            return Json(new { Success = false });
+        }
+
+        [ObjectFilter(Param = "inviteFriends", RootType = typeof(InviteFriends))]
+        [Authorize]
+        public JsonResult InviteFriends(InviteFriends inviteFriends)
+        {
+            string[] contacts = inviteFriends.FriendsEmails.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            RegisteredUser user = registeredUserRepository.Get(this.UserId);
+
+            ClosetOutfit co = closetOutfitRepository.Get(Convert.ToInt32(inviteFriends.OutfitId));
+
+            foreach (string contact in contacts)
+            {
+                if (string.IsNullOrEmpty(contact) || contact == " ")
+                    continue;
+
+                string email = contact;
+                if (contact.IndexOf("[") != -1 && contact.IndexOf("]") != -1)
+                    email = contact.Split('[')[1].Split(']')[0];
+
+                string key = Guid.NewGuid().ToString();
+
+                List<Garment> lst = new List<Garment>();
+                foreach (Garment garment in co.Components)
+                    if(garment.Id != 0)
+                        lst.Add(garment);
+
+                EmailData data = new EmailData
+                {
+                    Components = lst,
+                    KeyCode = key,
+                    Comments = HttpUtility.HtmlEncode(inviteFriends.Message),
+                    InvitationLink = "/Outfit/Rating/VoteFromInvitation/" + key + "/default.aspx",
+                    GarmentsUri = Resources.GetGarmentLargePath(),
+                    OutfitUpdater = outfitUpdaterRepository.GetRandomOutfitUpdaterFor(co.PreCombination)
+                };
+                if(data.OutfitUpdater == null)
+                {
+                    data.OutfitUpdater = new OutfitUpdater();
+                    data.OutfitUpdater.BuyUrl = string.Empty;
+                    data.OutfitUpdater.ImageUrl = string.Empty;
+                    data.OutfitUpdater.Name = string.Empty;
+                    data.OutfitUpdater.Partner = new Partner(string.Empty, string.Empty);
+                }
+                data.OutfitUpdaterPrice = Convert.ToDecimal(data.OutfitUpdater.Price).ToString("$#,##0.00");
+                
+                messageSenderService.SendWithTemplate("invite2rate", user, data, email);
+
+                FriendRatingInvitation invitation = new FriendRatingInvitation();
+                invitation.FriendEmail = email;
+                invitation.InvitationSentOn = DateTime.Now;
+                invitation.FriendRateOn = invitation.InvitationSentOn;
+                invitation.KeyCode = key;
+                invitation.Message = inviteFriends.Message;
+                invitation.User = user;
+                invitation.ClosetOutfit = co;
+                friendRatingInvitationRepository.DbContext.BeginTransaction();
+                friendRatingInvitationRepository.SaveOrUpdate(invitation);
+                friendRatingInvitationRepository.DbContext.CommitTransaction();
+            }
+
+            if (inviteFriends.SendMe)
+            {
+                EmailCopyData data = new EmailCopyData
+                {
+                    Components = co.Components,
+                    Comments = HttpUtility.HtmlEncode(inviteFriends.Message),
+                    GarmentsUri = Resources.GetGarmentLargePath(),
+                    OutfitUpdater = outfitUpdaterRepository.GetRandomOutfitUpdaterFor(co.PreCombination)
+                };
+                data.OutfitUpdaterPrice = Convert.ToDecimal(data.OutfitUpdater.Price).ToString("$#,##0.00");
+
+                messageSenderService.SendWithTemplate("copyinvite2rate", user, data, user.EmailAddress);
+            }
+
+            TrackingHelper.Save("MyOutfitsController", "InviteFriends", Guid.NewGuid().ToString(), "noIp", UserId.ToString(), "noChannel", null, string.Empty);
+
+            return Json(new { Success = true });
+        }
+
+        public class EmailData
+        {
+            public string Comments { get; set; }
+            public string KeyCode { get; set; }
+            public string InvitationLink { get; set; }
+            public IList<Garment> Components { get; set; }
+            public string GarmentsUri { get; set; }
+            public OutfitUpdater OutfitUpdater { get; set; }
+            public string OutfitUpdaterPrice { get; set; }
+        }
+        public class EmailCopyData
+        {
+            public string Comments { get; set; }
+            public IList<Garment> Components { get; set; }
+            public string GarmentsUri { get; set; }
+            public OutfitUpdater OutfitUpdater { get; set; }
+            public string OutfitUpdaterPrice { get; set; }
+        }
+
+        private IList<ClosetOutfitView> Search(out int totalCount, OutfitSearch outfitSearch, RegisteredUser user)
+        {
+            IList<ClosetOutfitView> result = new List<ClosetOutfitView>();
+            using (SearchEngineService ses = SearchEngineService.GetByCloset(user.Closet.Id))
+            {
+                string sortBy = string.Empty;
+                switch (outfitSearch.SortBy)
+                {
+                    case "1":
+                        sortBy = "EditorRating";
+                        break;
+                    case "2":
+                        sortBy = "MyRating";
+                        break;
+                    case "3":
+                        sortBy = "FriendRating";
+                        break;
+                    case "4":
+                        sortBy = "WornDate";
+                        break;
+                }
+
+                SearchParameters sp = new SearchParameters();
+                if (outfitSearch.MyFavorites)
+                    sp.MyRating = 5;
+                sp.FreeText = string.Format("{0} {1} {2}", outfitSearch.Color, outfitSearch.Pattern, outfitSearch.Search);
+                char[] separator = new char[1];
+                separator[0] = ' ';
+                if(!string.IsNullOrEmpty(outfitSearch.SeasonName))
+                    sp.Seasons = outfitSearch.SeasonName.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+                if (!string.IsNullOrEmpty(outfitSearch.Garment) && outfitSearch.Garment != NOCATEGORY)
+                    sp.FreeText += " " + outfitSearch.Garment;
+                separator[0] = ',';
+                if (!string.IsNullOrEmpty(outfitSearch.SelectedEvents))
+                    sp.EventTypes = outfitSearch.SelectedEvents.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+                    
+                if (!string.IsNullOrEmpty(outfitSearch.Trend) && outfitSearch.Trend != NOTREND)
+                {
+                    Trend trend = trendRepository.GetByName(outfitSearch.Trend);
+                    sp.TrendKeywords = new List<string>(trend.Keywords).ToArray();
+                }
+
+                if (outfitSearch.CreatedByMe)
+                    sp.CreatedByMe = true;
+                if (outfitSearch.IsRatedByMe)
+                    sp.IsRatedByMe = true;
+                if (outfitSearch.IsRatedByFriends)
+                    sp.IsRatedByFriends = true;
+
+                if (outfitSearch.SelectedFlavors != null && outfitSearch.SelectedFlavors.Split(separator, StringSplitOptions.RemoveEmptyEntries).Length == 1)
+                    sp.FlavorId = Convert.ToInt32(outfitSearch.SelectedFlavors.Split(separator, StringSplitOptions.RemoveEmptyEntries)[0]);
+
+                SearchEngineResponse response = ses.Search(
+                    sp,
+                    (Convert.ToInt32(outfitSearch.Page)*Convert.ToInt32(outfitSearch.PageSize)) - Convert.ToInt32(outfitSearch.PageSize), Convert.ToInt32(outfitSearch.PageSize), sortBy, true);
+
+                totalCount = response.TotalCount;
+                List<int> lstIds = new List<int>();
+                foreach (SearchEngineResult engineResult in response.Results)
+                    lstIds.Add(engineResult.EntryId);
+                if(lstIds.Count > 0)
+                    result = closetOutfitRepository.Search(lstIds, user.Closet.Id);
+            }
+            return result;
+        }
+
+        private void GetOutfitsInfo(bool isPublic)
+        {
+            List<SelectListItem> lst = new List<SelectListItem>();
+            SelectListItem sl = new SelectListItem();
+            sl.Text = "Editor Rating";
+            sl.Value = 1.ToString();
+            lst.Add(sl);
+            sl = new SelectListItem();
+            sl.Text = "Rated by me";
+            if (isPublic)
+                sl.Text = "Rated by user";
+            sl.Value = 2.ToString();
+            lst.Add(sl);
+            sl = new SelectListItem();
+            sl.Text = "Rated by friends";
+            sl.Value = 3.ToString();
+            lst.Add(sl);
+            //sl = new SelectListItem();
+            //sl.Text = "Last Worn Date";
+            //sl.Value = 4.ToString();
+            //lst.Add(sl);
+            ViewData["SortBy"] = lst;
+        }
+
+        [ObjectFilter(Param = "outfitRate", RootType = typeof(OutfitRate))]
+        [Transaction]
+        [Authorize]
+        public ActionResult RateOutfit(OutfitRate outfitRate)
+        {
+            ClosetOutfit closetOutfit = closetOutfitRepository.Get(outfitRate.ClosetOutfitId);
+            if (closetOutfit.Rating == null)
+                closetOutfit.Rating = new Rating();
+            closetOutfit.Rating.Rate(closetOutfit, outfitRate.Rate);
+
+            ActionResult res = Json(new {Success = true});
+
+            if (outfitRate.Rate == 5)
+            {
+                if (closetOutfit.Closet.FavoriteOutfit != null)
+                {
+                    closetOutfitRepository.SaveOrUpdate(closetOutfit);
+                    res = Json(new { Success = true, ReplaceFavorite = true });
+                }
+                else
+                    res = SetFavorite(outfitRate);
+            }
+
+            if (closetOutfit.Closet.FavoriteOutfit != null && closetOutfit.Closet.FavoriteOutfit.Id == closetOutfit.Id)
+                res = Json(new { Success = true, RemoveFavorite = true });
+
+            closetOutfitRepository.SaveOrUpdate(closetOutfit);
+
+            using (SearchEngineService ses = SearchEngineService.GetByCloset(ClosetId))
+                ses.AddEntry(closetOutfit.ToSearchEngineEntry());
+
+            return res;
+        }
+
+        [ObjectFilter(Param = "closetoutfitid", RootType = typeof(int))]
+        [Transaction]
+        [Authorize]
+        public ActionResult ClearFavorite(int closetoutfitid)
+        {
+            ClosetOutfit closetOutfit = closetOutfitRepository.Get(closetoutfitid);
+            closetOutfit.Closet.ClearFavoriteOutfit();
+            closetOutfitRepository.SaveOrUpdate(closetOutfit);
+            return Json(new { Success = true });
+        }
+
+
+        [ObjectFilter(Param = "outfitRate", RootType = typeof(OutfitRate))]
+        [Transaction]
+        [Authorize]
+        public ActionResult SetFavorite(OutfitRate outfitRate)
+        {
+            ClosetOutfit closetOutfit = closetOutfitRepository.Get(outfitRate.ClosetOutfitId);
+            closetRepository.DbContext.BeginTransaction();
+            Closet c = closetRepository.Get(this.ClosetId);
+            c.SetFavoriteOutfit(closetOutfit);
+            closetRepository.SaveOrUpdate(c);
+            closetRepository.DbContext.CommitTransaction();
+            string name = closetOutfitRepository.GetByClosetOutfitId(closetOutfit.Id).ShortEventTypes + closetOutfit.Id;
+            return Json(new { Success = true, SetFavorite = true, Name = name });
+        }
+
+        private bool IsUserCloset(int? userId)
+        {
+            if (userId.HasValue)
+            {
+                RegisteredUser user = registeredUserRepository.Get(userId.Value);
+                MembershipUser mu = Membership.GetUser();
+                if (mu != null && Convert.ToInt32(mu.ProviderUserKey) == user.MembershipUserId)
+                    return true;
+            }
+            return false;
+        }
+        
+        private int? GetUserId(string userName)
+        {
+            RegisteredUser registeredUser = GetRegisteredUser(userName);
+            if (registeredUser != null)
+                return registeredUser.Id;
+
+            return null;
+        }
+
+        private bool IsPublicCloset(string userName)
+        {
+            RegisteredUser registeredUser = GetRegisteredUser(userName);
+            if (registeredUser != null && registeredUser.Closet != null)
+                return (registeredUser.Closet.PrivacyLevel == PrivacyLevel.FullCloset);
+            
+            return false;
+        }
+        
+        private RegisteredUser GetRegisteredUser(string userName)
+        {
+            MembershipUser closetUser = Membership.GetUser(userName);
+            if (closetUser != null)
+            {
+                int membershipId = Convert.ToInt32(closetUser.ProviderUserKey);
+                return registeredUserRepository.GetByMembershipId(membershipId);
+            }
+            return null;
+        }
+
+        [ObjectFilter(Param = "outfitSearch", RootType = typeof(OutfitSearch))]
+        public JsonResult SaveFilters(OutfitSearch outfitSearch)
+        {
+            SavedFilter savedFilter = savedFilterRepository.GetByName(outfitSearch.Name, UserId);
+            if(savedFilter == null)
+                savedFilter = new SavedFilter();
+            savedFilter.Color = outfitSearch.Color;
+            savedFilter.CreatedByMe = outfitSearch.CreatedByMe;
+            savedFilter.Garment = outfitSearch.Garment;
+            savedFilter.IsRatedByFriends = outfitSearch.IsRatedByFriends;
+            savedFilter.IsRatedByMe = outfitSearch.IsRatedByMe;
+            savedFilter.Name = outfitSearch.Name;
+            savedFilter.Pattern = outfitSearch.Pattern;
+            savedFilter.Search = outfitSearch.Search;
+            savedFilter.SeasonName = outfitSearch.SeasonName;
+            savedFilter.SelectedEvents = outfitSearch.SelectedEvents;
+            savedFilter.SelectedFlavors = outfitSearch.SelectedFlavors;
+            savedFilter.Trend = outfitSearch.Trend;
+            savedFilter.UserId = UserId;
+            savedFilter.MyFavorites = outfitSearch.MyFavorites;
+
+            savedFilterRepository.SaveOrUpdate(savedFilter);
+            IList<SavedFilter> lst = savedFilterRepository.GetAllFor(UserId);
+            List<MVCSavedFilter> result = new List<MVCSavedFilter>();
+            foreach (SavedFilter filter in lst)
+            {
+                if(filter.Name == outfitSearch.Name)
+                    result.Add(new MVCSavedFilter(filter, true));
+                else
+                    result.Add(new MVCSavedFilter(filter));
+            }
+            return Json(result);
+        }
+
+        [ObjectFilter(Param = "savedFilterId", RootType = typeof(int))]
+        public JsonResult RemoveSavedFilter(int savedFilterId)
+        {
+            SavedFilter savedFilter = savedFilterRepository.Get(savedFilterId);
+            savedFilterRepository.DbContext.BeginTransaction();
+            savedFilterRepository.Delete(savedFilter);
+            savedFilterRepository.DbContext.CommitTransaction();
+            IList<SavedFilter> lst = savedFilterRepository.GetAllFor(UserId);
+            List<MVCSavedFilter> result = new List<MVCSavedFilter>();
+            foreach (SavedFilter filter in lst)
+                result.Add(new MVCSavedFilter(filter));
+            return Json(result);
+        }
+
+        [ObjectFilter(Param = "savedFilterId", RootType = typeof(int))]
+        public JsonResult GetSavedFilter(int savedFilterId)
+        {
+            SavedFilter savedFilter = savedFilterRepository.Get(savedFilterId);
+            SavedFilter temp = new SavedFilter();
+            if (savedFilter.Garment == NOCATEGORY)
+                temp.Garment = "0";
+            else
+                temp.Garment = categoryRepository.GetByDescription(savedFilter.Garment).Id.ToString();
+
+            if (savedFilter.Trend == NOTREND)
+                temp.Trend = "0";
+            else
+                temp.Trend = trendRepository.GetByName(savedFilter.Trend).Id.ToString();
+
+            if (savedFilter.Color != string.Empty)
+                temp.Color = colorRepository.GetByDescription(savedFilter.Color).Id.ToString();
+
+            if (savedFilter.Pattern != string.Empty)
+                temp.Pattern = patterRepository.GetByDescription(savedFilter.Pattern).Id.ToString();
+
+            temp.CreatedByMe = savedFilter.CreatedByMe;
+            temp.IsRatedByFriends = savedFilter.IsRatedByFriends;
+            temp.IsRatedByMe = savedFilter.IsRatedByMe;
+            temp.Name = savedFilter.Name;
+            temp.Search = savedFilter.Search;
+            temp.SeasonName = savedFilter.SeasonName;
+            temp.SelectedEvents = savedFilter.SelectedEvents;
+            temp.SelectedFlavors = savedFilter.SelectedFlavors;
+            temp.UserId = savedFilter.UserId;
+            temp.MyFavorites = savedFilter.MyFavorites;
+
+            return Json(temp);
+        }
+        
+        [ObjectFilter(Param = "text", RootType = typeof(string))]
+        public JsonResult TrackFacebookPublish(string text)
+        {
+            return Json(text);
+        }
+    }
+}

@@ -1,0 +1,23 @@
+﻿.divButtonBig
+{
+    height:33px !important;
+    width: 160px !important;
+    border:none !important;
+    padding-top:13px !important;
+	background: url(/static/img/btn_big_orange.png) no-repeat #fff !important;
+}
+
+.formButtonBig input 
+{
+    padding-left:0px !important;
+    margin-left:0px !important;
+    height:48px !important;
+    width: 180px !important;
+	background: url(/static/img/btn_big_orange.png) no-repeat #fff !important;
+    border:none !important;
+}
+
+select 
+{
+	width:auto !important;
+}

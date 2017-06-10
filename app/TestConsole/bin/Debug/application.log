@@ -1,0 +1,20 @@
+2010-10-26 17:29:41,040 [5] FashionAde.Services.OutfitEngineService..ctor(C:\Projects\FashionAde\app\FashionAde.Services\OutfitEngineService.cs:46) - Constructor called
+
+2010-10-26 17:29:41,190 [5] FashionAde.Services.OutfitEngineService.CreateOutfits(C:\Projects\FashionAde\app\FashionAde.Services\OutfitEngineService.cs:91) - Creating full closet 275
+
+2010-10-26 17:29:44,171 [5] FashionAde.Services.OutfitEngineProcessor.ExecuteOutfitGenerator(C:\Projects\FashionAde\app\FashionAde.Services\OutfitEngineProcessor.cs:150) - Processing Closet 275.
+
+2010-10-26 17:29:44,574 [5] FashionAde.Services.OutfitEngineProcessor.ExecuteOutfitGenerator(C:\Projects\FashionAde\app\FashionAde.Services\OutfitEngineProcessor.cs:162) - Found 3 garments.
+
+2010-10-26 17:29:44,576 [5] FashionAde.Services.OutfitEngineProcessor.ExecuteOutfitGenerator(C:\Projects\FashionAde\app\FashionAde.Services\OutfitEngineProcessor.cs:167) - Found 0 accesories.
+
+2010-10-26 17:37:35,396 [5] FashionAde.Services.OutfitEngineService..ctor(C:\Projects\FashionAde\app\FashionAde.Services\OutfitEngineService.cs:46) - Constructor called
+
+2010-10-26 17:37:35,399 [5] FashionAde.Services.OutfitEngineService.CreateOutfits(C:\Projects\FashionAde\app\FashionAde.Services\OutfitEngineService.cs:91) - Creating full closet 276
+
+2010-10-26 17:37:37,131 [5] FashionAde.Services.OutfitEngineProcessor.ExecuteOutfitGenerator(C:\Projects\FashionAde\app\FashionAde.Services\OutfitEngineProcessor.cs:150) - Processing Closet 276.
+
+2010-10-26 17:37:37,248 [5] FashionAde.Services.OutfitEngineProcessor.ExecuteOutfitGenerator(C:\Projects\FashionAde\app\FashionAde.Services\OutfitEngineProcessor.cs:162) - Found 1 garments.
+
+2010-10-26 17:37:37,250 [5] FashionAde.Services.OutfitEngineProcessor.ExecuteOutfitGenerator(C:\Projects\FashionAde\app\FashionAde.Services\OutfitEngineProcessor.cs:167) - Found 0 accesories.
+

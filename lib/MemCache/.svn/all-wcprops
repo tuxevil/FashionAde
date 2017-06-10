@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/nybble/!svn/ver/6037/FashionAde/trunk/lib/MemCache
+END
+NHibernate.Caches.MemCache.dll
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/nybble/!svn/ver/6037/FashionAde/trunk/lib/MemCache/NHibernate.Caches.MemCache.dll
+END
+Memcached.ClientLibrary.dll
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/nybble/!svn/ver/6037/FashionAde/trunk/lib/MemCache/Memcached.ClientLibrary.dll
+END
+ICSharpCode.SharpZipLib.dll
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/nybble/!svn/ver/6037/FashionAde/trunk/lib/MemCache/ICSharpCode.SharpZipLib.dll
+END
+Enyim.Caching.dll
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/nybble/!svn/ver/6037/FashionAde/trunk/lib/MemCache/Enyim.Caching.dll
+END
+Memcached.ClientLibrary.license.txt
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/nybble/!svn/ver/6037/FashionAde/trunk/lib/MemCache/Memcached.ClientLibrary.license.txt
+END
+Releases-MemCacheDManager_1_0_3_0.msi
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/nybble/!svn/ver/6037/FashionAde/trunk/lib/MemCache/Releases-MemCacheDManager_1_0_3_0.msi
+END

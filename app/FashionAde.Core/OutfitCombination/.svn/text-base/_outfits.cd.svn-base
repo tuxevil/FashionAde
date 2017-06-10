@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FashionAde.Core.OutfitCombination.Combination">
+    <Position X="4.25" Y="0.5" Width="1.75" />
+    <Members>
+      <Field Name="eventTypes" Hidden="true" />
+      <Field Name="fashionFlavors" Hidden="true" />
+      <Field Name="garments" Hidden="true" />
+      <Field Name="seasons" Hidden="true" />
+      <Field Name="status" Hidden="true" />
+      <Field Name="visibility" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AmwgAAIGEAAAAgAAAAAAAAAAAAAAAAAQACAgEABAIAA=</HashCode>
+      <FileName>OutfitCombination\Combination.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Status" />
+      <Property Name="Visibility" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Garments" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="FashionAde.Core.OutfitCombination.Outfit">
+    <Position X="1.5" Y="1.25" Width="2" />
+    <Members>
+      <Field Name="accesories" Hidden="true" />
+      <Field Name="averageFriendRating" Hidden="true" />
+      <Field Name="averageUserRating" Hidden="true" />
+      <Field Name="averageWearRating" Hidden="true" />
+      <Field Name="combination" Hidden="true" />
+      <Field Name="editorRating" Hidden="true" />
+      <Field Name="updaters" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>CAAAhgAAAJAAEAAAAJAAEACAAAgAABAAAAAQAAgCgAI=</HashCode>
+      <FileName>OutfitCombination\Outfit.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Combination" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Accesories" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="FashionAde.Core.OutfitCombination.UserOutfit">
+    <Position X="1.5" Y="4.75" Width="1.5" />
+    <Members>
+      <Field Name="user" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>OutfitCombination\UserOutfit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FashionAde.Core.Clothing.Garment" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAEEAAAAAEAAAAAAAAABAAIAAUgAAABIAAAAAAA=</HashCode>
+      <FileName>Clothing\Garment.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Enum Name="FashionAde.Core.OutfitCombination.CombinationVisibility">
+    <Position X="6" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>OutfitCombination\CombinationVisibility.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FashionAde.Core.OutfitCombination.CombinationStatus">
+    <Position X="4" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>OutfitCombination\CombinationStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

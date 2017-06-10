@@ -1,0 +1,134 @@
+10
+
+dir
+7420
+http://sourcesafe.nybblenetwork.com:8080/svn/nybble/FashionAde/trunk/app/FashionAde.Web/Views
+http://sourcesafe.nybblenetwork.com:8080/svn/nybble
+
+
+
+2010-11-02T00:50:21.982031Z
+7359
+sebastian.real
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+420dda77-6af4-1841-a513-76830d1e3cad
+
+Web.config
+file
+
+
+
+
+2010-10-20T19:02:51.830652Z
+610a467fc9ccfa5d41306e4c6c3105b9
+2010-05-11T12:45:19.954435Z
+3866
+leonardo.rodriguez
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1794
+
+OutfitUpdaters
+dir
+
+Rating
+dir
+
+EventTypeSelector
+dir
+
+Invitation
+dir
+
+MyGarments
+dir
+
+Home
+dir
+
+FlavorSelect
+dir
+
+Contact
+dir
+
+Account
+dir
+
+GarmentSelector
+dir
+
+OtherOutfits
+dir
+
+EmailConfirmation
+dir
+
+FlavorWeight
+dir
+
+UploadGarment
+dir
+
+MyOutfits
+dir
+
+ContactUs
+dir
+
+Shared
+dir
+
+WishList
+dir
+
+Friend
+dir
+
+Login
+dir
+
+FriendBetaInvitation
+dir
+
+OUImportation
+dir
+
+Content
+dir
+
+Registration
+dir
+

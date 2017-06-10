@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/nybble/!svn/ver/5586/FashionAde/trunk/app/FashionAde.Web.Controllers/Account/Views
+END
+ForgotPasswordView.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/nybble/!svn/ver/4977/FashionAde/trunk/app/FashionAde.Web.Controllers/Account/Views/ForgotPasswordView.cs
+END
+UserAnswer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/nybble/!svn/ver/4977/FashionAde/trunk/app/FashionAde.Web.Controllers/Account/Views/UserAnswer.cs
+END
+UserFull.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/nybble/!svn/ver/4980/FashionAde/trunk/app/FashionAde.Web.Controllers/Account/Views/UserFull.cs
+END
+UserPassword.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/nybble/!svn/ver/4977/FashionAde/trunk/app/FashionAde.Web.Controllers/Account/Views/UserPassword.cs
+END
+UserUpdate.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/nybble/!svn/ver/4977/FashionAde/trunk/app/FashionAde.Web.Controllers/Account/Views/UserUpdate.cs
+END
+Invitation.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/nybble/!svn/ver/5586/FashionAde/trunk/app/FashionAde.Web.Controllers/Account/Views/Invitation.cs
+END
+UserEmail.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/nybble/!svn/ver/4977/FashionAde/trunk/app/FashionAde.Web.Controllers/Account/Views/UserEmail.cs
+END
+UserLogin.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/nybble/!svn/ver/4995/FashionAde/trunk/app/FashionAde.Web.Controllers/Account/Views/UserLogin.cs
+END

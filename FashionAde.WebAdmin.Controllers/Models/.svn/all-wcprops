@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.Controllers/Models
+END
+ISmtpClient.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.Controllers/Models/ISmtpClient.cs
+END
+SmtpClientProxy.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.Controllers/Models/SmtpClientProxy.cs
+END

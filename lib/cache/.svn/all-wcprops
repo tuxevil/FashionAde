@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/nybble/!svn/ver/5469/FashionAde/trunk/lib/cache
+END
+NHibernate.Caches.MemCache.dll
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/nybble/!svn/ver/5469/FashionAde/trunk/lib/cache/NHibernate.Caches.MemCache.dll
+END
+NHibernate.Caches.SysCache.dll
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/nybble/!svn/ver/5469/FashionAde/trunk/lib/cache/NHibernate.Caches.SysCache.dll
+END
+Memcached.ClientLibrary.dll
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/nybble/!svn/ver/5469/FashionAde/trunk/lib/cache/Memcached.ClientLibrary.dll
+END
+ICSharpCode.SharpZipLib.dll
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/nybble/!svn/ver/5469/FashionAde/trunk/lib/cache/ICSharpCode.SharpZipLib.dll
+END

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nybble/!svn/ver/2584/FashionAde/trunk/tools/CrudScaffolding/Templates
+END
+BaseTemplate.tt
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/nybble/!svn/ver/2584/FashionAde/trunk/tools/CrudScaffolding/Templates/BaseTemplate.tt
+END
+ScaffoldingGenerator.tt
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/nybble/!svn/ver/2584/FashionAde/trunk/tools/CrudScaffolding/Templates/ScaffoldingGenerator.tt
+END

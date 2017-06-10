@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/nybble/!svn/ver/7291/FashionAde/trunk/app/FashionAde.Web.Controllers/Base
+END
+RegisterTrackingAttribute.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/nybble/!svn/ver/5527/FashionAde/trunk/app/FashionAde.Web.Controllers/Base/RegisterTrackingAttribute.cs
+END
+CustomOutputCacheAttribute.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/nybble/!svn/ver/5410/FashionAde/trunk/app/FashionAde.Web.Controllers/Base/CustomOutputCacheAttribute.cs
+END
+RssActionResult.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/nybble/!svn/ver/5411/FashionAde/trunk/app/FashionAde.Web.Controllers/Base/RssActionResult.cs
+END
+SslAttributes.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/nybble/!svn/ver/5532/FashionAde/trunk/app/FashionAde.Web.Controllers/Base/SslAttributes.cs
+END
+UserData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/nybble/!svn/ver/5411/FashionAde/trunk/app/FashionAde.Web.Controllers/Base/UserData.cs
+END
+UserDataHelper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/nybble/!svn/ver/7125/FashionAde/trunk/app/FashionAde.Web.Controllers/Base/UserDataHelper.cs
+END
+HandleErrorAttribute.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/nybble/!svn/ver/5593/FashionAde/trunk/app/FashionAde.Web.Controllers/Base/HandleErrorAttribute.cs
+END
+AntiForgeryToken.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/nybble/!svn/ver/5411/FashionAde/trunk/app/FashionAde.Web.Controllers/Base/AntiForgeryToken.cs
+END
+Resources.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/nybble/!svn/ver/7291/FashionAde/trunk/app/FashionAde.Web.Controllers/Base/Resources.cs
+END

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="99012cd2-4646-439f-a25a-31343841c703" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9999/Services/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="OutfitEngineService.wsdl" MetadataType="Wsdl" ID="224c6897-545a-47dc-a077-00fe453188e8" SourceId="1" SourceUrl="http://localhost:9999/Services/?wsdl" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="688d7159-32a8-480b-b208-18c80e78f144" SourceId="1" SourceUrl="http://localhost:9999/Services/?disco" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="3637829a-2a4b-466a-b1f1-71baf4208bd9" SourceId="1" SourceUrl="http://localhost:9999/Services/?xsd=xsd1" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="9a650c1c-4804-4c49-afab-640df0185814" SourceId="1" SourceUrl="http://localhost:9999/Services/?xsd=xsd2" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="7754b6b1-01c2-429b-9781-9f86d2aacf5b" SourceId="1" SourceUrl="http://localhost:9999/Services/?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,1 @@
+﻿ALTER TABLE tracking ADD TrackingIdentifier VARCHAR(36) NULL AFTER Date;

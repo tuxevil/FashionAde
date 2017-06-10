@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/nybble/!svn/ver/7349/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits
+END
+OtherOutfitsController.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/nybble/!svn/ver/5532/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits/OtherOutfitsController.cs
+END
+OutfitCreationController.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/nybble/!svn/ver/7122/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits/OutfitCreationController.cs
+END
+OutfitUpdatersController.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/nybble/!svn/ver/5503/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits/OutfitUpdatersController.cs
+END
+MyOutfitsController.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/nybble/!svn/ver/7349/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits/MyOutfitsController.cs
+END
+RatingController.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/nybble/!svn/ver/7275/FashionAde/trunk/app/FashionAde.Web.Controllers/Outfits/RatingController.cs
+END

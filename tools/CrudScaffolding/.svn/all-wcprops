@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/nybble/!svn/ver/2584/FashionAde/trunk/tools/CrudScaffolding
+END
+EntityScaffoldingDetails.tt
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/nybble/!svn/ver/2584/FashionAde/trunk/tools/CrudScaffolding/EntityScaffoldingDetails.tt
+END
+ScaffoldingGeneratorCommand.tt
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/nybble/!svn/ver/2584/FashionAde/trunk/tools/CrudScaffolding/ScaffoldingGeneratorCommand.tt
+END
+CrudScaffolding.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/nybble/!svn/ver/2584/FashionAde/trunk/tools/CrudScaffolding/CrudScaffolding.csproj
+END

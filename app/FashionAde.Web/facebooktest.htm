@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title></title>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>
+window.fbAsyncInit = function() {
+  FB.init({
+    appId: "107238805980424",
+    xfbml: true,
+    cookie: true,
+    status: true
+  });
+};
+(function() {
+  var e = document.createElement('script'); e.async = true;
+  e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+  document.getElementById('fb-root').appendChild(e);
+}());
+
+function doPublish(attachment) {
+    FB.ui(attachment);
+}
+</script>
+<button onclick="
+                    doPublish({method: 'stream.publish',attachment: {
+                            'name':'FashionAde',
+                            'href':'http://site.fade.app.nybblenetwork.com/rating/index/613847/default.aspx',
+                            'description':'Would you like to rate my outfit?',
+                            'media':[{'type':'image','src':'http://site.fade.app.nybblenetwork.com/res/Garments/333102_98.png','href':'http://site.fade.app.nybblenetwork.com/rating/index/613847/default.aspx'},{'type':'image','src':'http://site.fade.app.nybblenetwork.com/res/Garments/333102_98.png','href':'http://site.fade.app.nybblenetwork.com/rating/index/613847/default.aspx'},{'type':'image','src':'http://site.fade.app.nybblenetwork.com/res/Garments/333102_98.png','href':'http://site.fade.app.nybblenetwork.com/rating/index/613847/default.aspx'},{'type':'image','src':'http://site.fade.app.nybblenetwork.com/res/Garments/333102_98.png','href':'http://site.fade.app.nybblenetwork.com/rating/index/613847/default.aspx'},{'type':'image','src':'http://site.fade.app.nybblenetwork.com/res/Garments/333102_98.png','href':'http://site.fade.app.nybblenetwork.com/rating/index/613847/default.aspx'}]
+                        },
+                        action_link: [
+                          {
+                            text: 'Rate it now!',
+                            href: 'http://site.fade.app.nybblenetwork.com/rating/index/613847/default.aspx'
+                          }
+                        ]});return false;">Open Preview Dialog</button>
+</body>
+</html>

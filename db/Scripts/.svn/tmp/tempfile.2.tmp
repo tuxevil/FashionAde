@@ -1,0 +1,14 @@
+<<<<<<< .mine
+﻿ALTER TABLE fashionade_dev.outfitupdaters
+ DROP FOREIGN KEY silouhettes,
+ DROP FOREIGN KEY colorfamily,
+ DROP FOREIGN KEY partner,
+ DROP FOREIGN KEY patterns,
+ CHANGE ExternalId ExternalId VARCHAR(100) NOT NULL;
+ALTER TABLE fashionade_dev.outfitupdaters
+ ADD CONSTRAINT silouhettes FOREIGN KEY (SilouhetteId) REFERENCES fashionade_dev.silouhettes (SilouhetteId) ON UPDATE RESTRICT ON DELETE RESTRICT,
+ ADD CONSTRAINT colorfamily FOREIGN KEY (ColorFamilyId) REFERENCES fashionade_dev.colorfamilies (ColorFamilyId) ON UPDATE RESTRICT ON DELETE RESTRICT,
+ ADD CONSTRAINT partner FOREIGN KEY (PartnerId) REFERENCES fashionade_dev.partners (PartnerId) ON UPDATE RESTRICT ON DELETE RESTRICT,
+ ADD CONSTRAINT patterns FOREIGN KEY (PatternId) REFERENCES fashionade_dev.patterns (PatternId) ON UPDATE RESTRICT ON DELETE RESTRICT;
+ =======
+﻿ALTER TABLE tracking ADD TrackingIdentifier VARCHAR(36) NULL AFTER Date;>>>>>>> .r5475

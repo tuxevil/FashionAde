@@ -1,0 +1,2 @@
+﻿<span style="color:#000000; font-weight:bold;">User Name:</span> <span style="color:#475F8F; font-weight:bold;">$RegisteredUser.UserName$</span><br /><br />
+<span style="color:#000000; font-weight:bold;">Email:</span> <span style="color:#475F8F; font-weight:bold;">$RegisteredUser.EmailAddress$</span><br /><br />

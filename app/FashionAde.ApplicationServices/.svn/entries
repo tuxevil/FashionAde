@@ -1,0 +1,89 @@
+10
+
+dir
+7420
+http://sourcesafe.nybblenetwork.com:8080/svn/nybble/FashionAde/trunk/app/FashionAde.ApplicationServices
+http://sourcesafe.nybblenetwork.com:8080/svn/nybble
+
+
+
+2010-11-03T20:29:08.132124Z
+7408
+leonardo.rodriguez
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+420dda77-6af4-1841-a513-76830d1e3cad
+
+Accounts
+dir
+
+Communication
+dir
+
+FashionAde.ApplicationServices.csproj
+file
+
+
+
+
+2010-11-04T02:25:08.324300Z
+6e4f90a3fce9b6ac3f91832454e65043
+2010-11-03T19:41:53.150268Z
+7403
+leonardo.rodriguez
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8985
+
+Common
+dir
+
+Content
+dir
+
+Friends
+dir
+
+Outfit
+dir
+
+SearchEngine
+dir
+
+Properties
+dir
+
+Templates
+dir
+

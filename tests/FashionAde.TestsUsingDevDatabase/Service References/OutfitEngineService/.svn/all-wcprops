@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/nybble/!svn/ver/5301/FashionAde/trunk/tests/FashionAde.TestsUsingDevDatabase/Service%20References/OutfitEngineService
+END
+Reference.cs
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/nybble/!svn/ver/5301/FashionAde/trunk/tests/FashionAde.TestsUsingDevDatabase/Service%20References/OutfitEngineService/Reference.cs
+END
+Reference.svcmap
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/nybble/!svn/ver/5232/FashionAde/trunk/tests/FashionAde.TestsUsingDevDatabase/Service%20References/OutfitEngineService/Reference.svcmap
+END
+configuration91.svcinfo
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/nybble/!svn/ver/5301/FashionAde/trunk/tests/FashionAde.TestsUsingDevDatabase/Service%20References/OutfitEngineService/configuration91.svcinfo
+END
+OutfitEngineService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/nybble/!svn/ver/5301/FashionAde/trunk/tests/FashionAde.TestsUsingDevDatabase/Service%20References/OutfitEngineService/OutfitEngineService.wsdl
+END
+item.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/nybble/!svn/ver/5232/FashionAde/trunk/tests/FashionAde.TestsUsingDevDatabase/Service%20References/OutfitEngineService/item.xsd
+END
+item1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/nybble/!svn/ver/5232/FashionAde/trunk/tests/FashionAde.TestsUsingDevDatabase/Service%20References/OutfitEngineService/item1.xsd
+END
+configuration.svcinfo
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/nybble/!svn/ver/5232/FashionAde/trunk/tests/FashionAde.TestsUsingDevDatabase/Service%20References/OutfitEngineService/configuration.svcinfo
+END
+item2.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/nybble/!svn/ver/5301/FashionAde/trunk/tests/FashionAde.TestsUsingDevDatabase/Service%20References/OutfitEngineService/item2.xsd
+END
+item.disco
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/nybble/!svn/ver/5232/FashionAde/trunk/tests/FashionAde.TestsUsingDevDatabase/Service%20References/OutfitEngineService/item.disco
+END

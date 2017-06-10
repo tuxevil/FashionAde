@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nybble/!svn/ver/7094/FashionAde/trunk/FashionAde.WebAdmin.Controllers
+END
+RolePermissionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/nybble/!svn/ver/4409/FashionAde/trunk/FashionAde.WebAdmin.Controllers/RolePermissionService.cs
+END
+HomeController.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/nybble/!svn/ver/7094/FashionAde/trunk/FashionAde.WebAdmin.Controllers/HomeController.cs
+END
+LoginController.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/nybble/!svn/ver/7094/FashionAde/trunk/FashionAde.WebAdmin.Controllers/LoginController.cs
+END
+BaseController.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/nybble/!svn/ver/7094/FashionAde/trunk/FashionAde.WebAdmin.Controllers/BaseController.cs
+END
+RouteRegistrar.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/nybble/!svn/ver/7094/FashionAde/trunk/FashionAde.WebAdmin.Controllers/RouteRegistrar.cs
+END
+OutfitUpdaterController.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/nybble/!svn/ver/7094/FashionAde/trunk/FashionAde.WebAdmin.Controllers/OutfitUpdaterController.cs
+END
+FashionAde.WebAdmin.Controllers.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/nybble/!svn/ver/7094/FashionAde/trunk/FashionAde.WebAdmin.Controllers/FashionAde.WebAdmin.Controllers.csproj
+END
+UserAdministrationController.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/nybble/!svn/ver/7094/FashionAde/trunk/FashionAde.WebAdmin.Controllers/UserAdministrationController.cs
+END

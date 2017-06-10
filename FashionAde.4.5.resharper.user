@@ -1,0 +1,276 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="livetemplates.csharp.usevar">False</setting>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="if" priority="17" />
+      <Item value="data" priority="6" />
+      <Item value="else" priority="1" />
+      <Item value="new" priority="11" />
+      <Item value="OutfitUpdater" priority="0" />
+      <Item value="string" priority="10" />
+      <Item value="Partner" priority="0" />
+      <Item value="user" priority="2" />
+      <Item value="byMe" priority="1" />
+      <Item value="bool" priority="2" />
+      <Item value="isPublic" priority="0" />
+      <Item value="sl" priority="0" />
+      <Item value="showAsPublicCloset" priority="0" />
+      <Item value="Request" priority="0" />
+      <Item value="title" priority="1" />
+      <Item value="Model" priority="5" />
+      <Item value="ses" priority="1" />
+      <Item value="outfitSelected" priority="0" />
+      <Item value="Closet" priority="1" />
+      <Item value="ClosetId" priority="1" />
+      <Item value="closetOutfit" priority="0" />
+      <Item value="return" priority="1" />
+      <Item value="uo" priority="0" />
+      <Item value="ClosetOutfit" priority="0" />
+      <Item value="userId" priority="0" />
+      <Item value="null" priority="0" />
+      <Item value="UserId" priority="0" />
+      <Item value="SeasonHelper" priority="0" />
+      <Item value="public" priority="4" />
+      <Item value="static" priority="0" />
+      <Item value="Season" priority="1" />
+      <Item value="int" priority="4" />
+      <Item value="season" priority="0" />
+      <Item value="page" priority="1" />
+      <Item value="myRating" priority="1" />
+      <Item value="Convert" priority="0" />
+      <Item value="HtmlForm" priority="0" />
+      <Item value="form" priority="0" />
+      <Item value="IList" priority="1" />
+      <Item value="ClosetOutfitView" priority="1" />
+      <Item value="as" priority="0" />
+      <Item value="List&lt;ClosetOutfitView&gt;" priority="1" />
+      <Item value="orderedResults" priority="1" />
+      <Item value="foreach" priority="2" />
+      <Item value="result" priority="0" />
+      <Item value="savedFilterRepository" priority="0" />
+      <Item value="SavedFilter" priority="4" />
+      <Item value="name" priority="0" />
+      <Item value="outfitSearch" priority="8" />
+      <Item value="savedFilter" priority="14" />
+      <Item value="sp" priority="3" />
+      <Item value="SpanFilterResult" priority="0" />
+      <Item value="parameters" priority="2" />
+      <Item value="Count" priority="0" />
+      <Item value="Length" priority="1" />
+      <Item value="temp" priority="13" />
+      <Item value="closet" priority="1" />
+      <Item value="Expression" priority="0" />
+      <Item value="closetId" priority="0" />
+      <Item value="class" priority="0" />
+      <Item value="Serializable" priority="0" />
+      <Item value="MVCSavedFilter" priority="2" />
+      <Item value="this" priority="1" />
+      <Item value="false" priority="0" />
+      <Item value="List" priority="0" />
+      <Item value="List&lt;MVCSavedFilter&gt;" priority="0" />
+      <Item value="filter" priority="1" />
+      <Item value="selected" priority="0" />
+      <Item value="style" priority="0" />
+      <Item value="StringSplitOptions" priority="3" />
+      <Item value="char" priority="3" />
+      <Item value="separator" priority="3" />
+      <Item value="flavor" priority="0" />
+      <Item value="item" priority="0" />
+      <Item value="pager" priority="1" />
+      <Item value="pageSize" priority="1" />
+      <Item value="j" priority="1" />
+      <Item value="continue" priority="0" />
+      <Item value="totalPages" priority="3" />
+      <Item value="startPosition" priority="1" />
+      <Item value="endPosition" priority="0" />
+      <Item value="currentPage" priority="0" />
+      <Item value="totalCount" priority="0" />
+      <Item value="ContentPublished" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FashionAde.Web.Controllers.MyOutfitsController+EmailData">
+      <Item value="OutfitUpdater" priority="6" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FashionAde.Core.ThirdParties.OutfitUpdater">
+      <Item value="BuyUrl" priority="0" />
+      <Item value="ImageUrl" priority="0" />
+      <Item value="Partner" priority="1" />
+      <Item value="Name" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="Empty" priority="7" />
+      <Item value="IsNullOrEmpty" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FashionAde.Core.ThirdParties.Partner">
+      <Item value="Name" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FashionAde.Core.Accounts.RegisteredUser">
+      <Item value="Closet" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FashionAde.Core.Closet">
+      <Item value="Id" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FashionAde.Web.Controllers.MVCInteraction.OutfitSearch">
+      <Item value="ShowAsPublicCloset" priority="3" />
+      <Item value="Season" priority="0" />
+      <Item value="Name" priority="1" />
+      <Item value="SeasonName" priority="1" />
+      <Item value="MyFavorites" priority="0" />
+      <Item value="SavedFilters" priority="0" />
+      <Item value="SelectedEvents" priority="1" />
+      <Item value="SelectedFlavors" priority="1" />
+      <Item value="Color" priority="1" />
+      <Item value="Pattern" priority="0" />
+      <Item value="Search" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.Mvc.SelectListItem">
+      <Item value="Text" priority="3" />
+      <Item value="Selected" priority="0" />
+      <Item value="Value" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.HttpRequest">
+      <Item value="QueryString" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="ToUpper" priority="0" />
+      <Item value="Split" priority="3" />
+      <Item value="Replace" priority="1" />
+      <Item value="Length" priority="1" />
+      <Item value="Substring" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FashionAde.Core.Views.ClosetOutfitView">
+      <Item value="ShowAddToMyCloset" priority="0" />
+      <Item value="ClosetOutfitId" priority="0" />
+      <Item value="MyRating" priority="2" />
+      <Item value="Id" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FashionAde.ApplicationServices.SearchEngine.SearchEngineService">
+      <Item value="RemovePost" priority="0" />
+      <Item value="AddEntry" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FashionAde.Core.ClosetOutfit">
+      <Item value="ToSearchEngineEntry" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@FashionAde.Tracking.TrackingHelper">
+      <Item value="Save" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Int32">
+      <Item value="ToString" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Convert">
+      <Item value="ToInt32" priority="1" />
+      <Item value="ToInt16" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FashionAde.Web.Controllers.MyOutfitsController">
+      <Item value="ClosetId" priority="0" />
+      <Item value="UserId" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Int16">
+      <Item value="ToString" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IList`1">
+      <Item value="Add" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Find" priority="0" />
+      <Item value="Add" priority="0" />
+      <Item value="Count" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FashionAde.Core.DataInterfaces.ITrendRepository">
+      <Item value="GetCurrentTrends" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NHibernate.ICriteria">
+      <Item value="UniqueResult" priority="0" />
+      <Item value="Add" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FashionAde.Core.DataInterfaces.ISavedFilterRepository">
+      <Item value="GetByName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FashionAde.ApplicationServices.SearchEngine.SearchParameters">
+      <Item value="Seasons" priority="1" />
+      <Item value="MyRating" priority="0" />
+      <Item value="EventTypes" priority="0" />
+      <Item value="FlavorId" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FashionAde.Core.Views.SavedFilter">
+      <Item value="CreatedByMe" priority="1" />
+      <Item value="Garment" priority="0" />
+      <Item value="IsRatedByFriends" priority="1" />
+      <Item value="IsRatedByMe" priority="1" />
+      <Item value="Name" priority="2" />
+      <Item value="Search" priority="1" />
+      <Item value="SeasonName" priority="1" />
+      <Item value="SelectedEvents" priority="1" />
+      <Item value="SelectedFlavors" priority="1" />
+      <Item value="UserId" priority="1" />
+      <Item value="MyFavorites" priority="1" />
+      <Item value="Color" priority="3" />
+      <Item value="Pattern" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@NHibernate.Criterion.Expression">
+      <Item value="Eq" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FashionAde.Core.Views.MVCSavedFilter">
+      <Item value="SavedFilter" priority="0" />
+      <Item value="Selected" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.StringSplitOptions">
+      <Item value="RemoveEmptyEntries" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FashionAde.Web.Common.Pager">
+      <Item value="TotalRecords" priority="1" />
+      <Item value="PageSize" priority="1" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="6138F54F-859E-4CA0-9559-4A8D5193ECFE/d:Lucene.Net/f:LuceneTest.cs" caret="9881" fromTop="9" />
+      <File id="26375851-E958-47FE-B328-B7CF26DFD684/d:Views/f:SavedFilter.cs" caret="3212" fromTop="24" />
+      <File id="1A214C0E-B4F6-4F91-9878-2BBC34341C66/d:Base/f:Resources.cs" caret="1179" fromTop="35" />
+      <File id="982FFF44-06D3-40A9-8B81-71B8A6EDA58F/f:ObjectFilter.cs" caret="939" fromTop="13" />
+      <File id="1A214C0E-B4F6-4F91-9878-2BBC34341C66/d:Account/f:LoginController.cs" caret="2108" fromTop="13" />
+      <File id="1A214C0E-B4F6-4F91-9878-2BBC34341C66/d:Outfits/f:RatingController.cs" caret="5553" fromTop="16" />
+      <File id="4DC48987-6BF6-446D-9FDC-C1A19C626B67/d:css/f:jquery.rating.css" caret="414" fromTop="3" />
+      <File id="C3377EC9-8721-4C15-95AF-B974D36873B2/f:Web.config" caret="3642" fromTop="0" />
+      <File id="982FFF44-06D3-40A9-8B81-71B8A6EDA58F/f:Pager.cs" caret="0" fromTop="0" />
+      <File id="982FFF44-06D3-40A9-8B81-71B8A6EDA58F/f:Common.cs" caret="451" fromTop="17" />
+      <File id="C3377EC9-8721-4C15-95AF-B974D36873B2/d:static/d:js/f:outfit.js" caret="3438" fromTop="9" />
+      <File id="C3377EC9-8721-4C15-95AF-B974D36873B2/d:Views/d:Shared/f:Outfit.ascx" caret="1878" fromTop="12" />
+      <File id="1A214C0E-B4F6-4F91-9878-2BBC34341C66/d:Outfits/f:MyOutfitsController.cs" caret="11628" fromTop="12" />
+      <File id="26375851-E958-47FE-B328-B7CF26DFD684/d:ContentManagement/f:ContentBase.cs" caret="289" fromTop="10" />
+      <File id="26375851-E958-47FE-B328-B7CF26DFD684/d:ContentManagement/f:ContentPublished.cs" caret="222" fromTop="9" />
+      <File id="26375851-E958-47FE-B328-B7CF26DFD684/d:ContentManagement/f:ContentStatus.cs" caret="232" fromTop="11" />
+      <File id="08E9C4A6-6086-4D9E-8D27-41D4159CF95F/d:Content/f:IContentService.cs" caret="648" fromTop="17" />
+      <File id="1A214C0E-B4F6-4F91-9878-2BBC34341C66/d:Home/f:HomeController.cs" caret="1315" fromTop="17" />
+      <File id="08E9C4A6-6086-4D9E-8D27-41D4159CF95F/d:Content/f:ContentService.cs" caret="2128" fromTop="13" />
+      <File id="4ADD3200-7AA6-4D85-A02A-2D22D839B42F/d:Repository/f:ContentPublishedRepository.cs" caret="2786" fromTop="78" />
+      <File id="C3377EC9-8721-4C15-95AF-B974D36873B2/d:Views/d:MyOutfits/f:OutfitSearch.ascx" caret="26460" fromTop="5" />
+      <File id="C3377EC9-8721-4C15-95AF-B974D36873B2/d:Views/d:Shared/f:Site.Master" caret="1543" fromTop="24" />
+      <File id="C3377EC9-8721-4C15-95AF-B974D36873B2/d:static/d:css/f:site.css" caret="21136" fromTop="13" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="C3377EC9-8721-4C15-95AF-B974D36873B2/f:Web.config" caret="3642" fromTop="17" />
+      <File id="C3377EC9-8721-4C15-95AF-B974D36873B2/d:Views/d:Shared/f:Outfit.ascx" caret="1878" fromTop="12" />
+      <File id="C3377EC9-8721-4C15-95AF-B974D36873B2/d:Views/d:MyOutfits/f:OutfitSearch.ascx" caret="14592" fromTop="15" />
+      <File id="C3377EC9-8721-4C15-95AF-B974D36873B2/d:Views/d:MyOutfits/f:OutfitSearch.ascx" caret="13351" fromTop="4" />
+      <File id="C3377EC9-8721-4C15-95AF-B974D36873B2/d:static/d:js/f:outfit.js" caret="3460" fromTop="9" />
+      <File id="C3377EC9-8721-4C15-95AF-B974D36873B2/d:Views/d:MyOutfits/f:OutfitSearch.ascx" caret="3277" fromTop="17" />
+      <File id="982FFF44-06D3-40A9-8B81-71B8A6EDA58F/f:Common.cs" caret="408" fromTop="9" />
+      <File id="4ADD3200-7AA6-4D85-A02A-2D22D839B42F/d:Repository/f:ContentPublishedRepository.cs" caret="2354" fromTop="2" />
+      <File id="C3377EC9-8721-4C15-95AF-B974D36873B2/d:Views/d:MyOutfits/f:OutfitSearch.ascx" caret="26459" fromTop="5" />
+      <File id="C3377EC9-8721-4C15-95AF-B974D36873B2/d:static/d:css/f:site.css" caret="17194" fromTop="10" />
+    </RecentEdits>
+  </RecentFiles>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+</Configuration>

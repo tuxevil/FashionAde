@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/nybble/!svn/ver/2584/FashionAde/trunk/tools/CrudScaffolding/Templates/Web/Views
+END
+ShowTemplate.tt
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/nybble/!svn/ver/2584/FashionAde/trunk/tools/CrudScaffolding/Templates/Web/Views/ShowTemplate.tt
+END
+DomainObjectFormTemplate.tt
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/nybble/!svn/ver/2584/FashionAde/trunk/tools/CrudScaffolding/Templates/Web/Views/DomainObjectFormTemplate.tt
+END
+CreateTemplate.tt
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/nybble/!svn/ver/2584/FashionAde/trunk/tools/CrudScaffolding/Templates/Web/Views/CreateTemplate.tt
+END
+EditTemplate.tt
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/nybble/!svn/ver/2584/FashionAde/trunk/tools/CrudScaffolding/Templates/Web/Views/EditTemplate.tt
+END
+IndexTemplate.tt
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/nybble/!svn/ver/2584/FashionAde/trunk/tools/CrudScaffolding/Templates/Web/Views/IndexTemplate.tt
+END

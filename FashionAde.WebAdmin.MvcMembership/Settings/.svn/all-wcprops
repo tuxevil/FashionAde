@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/Settings
+END
+RegistrationSettings.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/Settings/RegistrationSettings.cs
+END
+IPasswordSettings.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/Settings/IPasswordSettings.cs
+END
+IPasswordResetRetrievalSettings.cs
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/Settings/IPasswordResetRetrievalSettings.cs
+END
+ILoginSettings.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/Settings/ILoginSettings.cs
+END
+AspNetMembershipProviderSettingsWrapper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/Settings/AspNetMembershipProviderSettingsWrapper.cs
+END
+PasswordSettings.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/Settings/PasswordSettings.cs
+END
+IRegistrationSettings.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/Settings/IRegistrationSettings.cs
+END
+PasswordResetRetrievalSettings.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/Settings/PasswordResetRetrievalSettings.cs
+END
+IMembershipSettings.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/Settings/IMembershipSettings.cs
+END
+LoginSettings.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/nybble/!svn/ver/5536/FashionAde/trunk/FashionAde.WebAdmin.MvcMembership/Settings/LoginSettings.cs
+END

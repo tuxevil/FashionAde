@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/nybble/!svn/ver/7193/FashionAde/trunk/app/FashionAde.ApplicationServices/Accounts
+END
+InvitationValidatorService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/nybble/!svn/ver/5695/FashionAde/trunk/app/FashionAde.ApplicationServices/Accounts/InvitationValidatorService.cs
+END
+RegisterMemberService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/nybble/!svn/ver/7193/FashionAde/trunk/app/FashionAde.ApplicationServices/Accounts/RegisterMemberService.cs
+END
+IInvitationCodeGeneratorService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/nybble/!svn/ver/5659/FashionAde/trunk/app/FashionAde.ApplicationServices/Accounts/IInvitationCodeGeneratorService.cs
+END
+RegisterMemberMessage.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/nybble/!svn/ver/4860/FashionAde/trunk/app/FashionAde.ApplicationServices/Accounts/RegisterMemberMessage.cs
+END
+IInvitationValidatorService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/nybble/!svn/ver/5612/FashionAde/trunk/app/FashionAde.ApplicationServices/Accounts/IInvitationValidatorService.cs
+END
+IRegisterMemberService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/nybble/!svn/ver/5612/FashionAde/trunk/app/FashionAde.ApplicationServices/Accounts/IRegisterMemberService.cs
+END
+InvitationCodeGeneratorService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/nybble/!svn/ver/5659/FashionAde/trunk/app/FashionAde.ApplicationServices/Accounts/InvitationCodeGeneratorService.cs
+END

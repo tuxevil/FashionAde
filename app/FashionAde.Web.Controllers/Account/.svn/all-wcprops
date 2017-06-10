@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/nybble/!svn/ver/7092/FashionAde/trunk/app/FashionAde.Web.Controllers/Account
+END
+AccountValidationController.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/nybble/!svn/ver/5532/FashionAde/trunk/app/FashionAde.Web.Controllers/Account/AccountValidationController.cs
+END
+LoginController.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/nybble/!svn/ver/7092/FashionAde/trunk/app/FashionAde.Web.Controllers/Account/LoginController.cs
+END
+AccountController.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/nybble/!svn/ver/5532/FashionAde/trunk/app/FashionAde.Web.Controllers/Account/AccountController.cs
+END
+EmailConfirmationController.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/nybble/!svn/ver/7092/FashionAde/trunk/app/FashionAde.Web.Controllers/Account/EmailConfirmationController.cs
+END
+InvitationController.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/nybble/!svn/ver/5637/FashionAde/trunk/app/FashionAde.Web.Controllers/Account/InvitationController.cs
+END

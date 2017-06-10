@@ -1,0 +1,480 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
+using Lucene.Net.Analysis;
+using Lucene.Net.Analysis.Standard;
+using Lucene.Net.Documents;
+using Lucene.Net.Index;
+using Lucene.Net.QueryParsers;
+using Lucene.Net.Search;
+using Lucene.Net.Store;
+using Lucene.Net.Util;
+using Similarity.Net;
+using log4net;
+using Lucene.Net.Analysis.Snowball;
+using Directory = Lucene.Net.Store.Directory;
+using System.Linq;
+
+namespace FashionAde.ApplicationServices.SearchEngine
+{
+    public class SearchParameters
+    {
+        public string FreeText { get; set; }
+        public int? FlavorId { get; set; }
+        public bool? CreatedByMe { get; set; }
+        public string[] TrendKeywords { get; set; }
+        public string[] Seasons { get; set; }
+        public int? MyRating { get; set; }
+        public int? FriendRating { get; set; }
+        public bool? IsRatedByMe { get; set; }
+        public bool? IsRatedByFriends { get; set; }
+
+        public string Color { get; set; }
+    }
+
+    public class SearchEngineService : IDisposable
+    {
+        /// <summary>
+        /// Creates a search engine service for this closet
+        /// </summary>
+        /// <param name="closetId">Closet Number</param>
+        /// <returns>The search engine service to use for creation or searching.</returns>
+        public static SearchEngineService GetByCloset(int closetId)
+        {
+            // Create the analyzer to use.
+            //Analyzer analizer = new SnowballAnalyzer("English", StopAnalyzer.ENGLISH_STOP_WORDS);
+            Analyzer analizer = new StandardAnalyzer();
+
+            // Select the index location
+            string directory = Path.Combine(ConfigurationManager.AppSettings[IndexDirectory], closetId.ToString());
+            Directory dir = FSDirectory.Open(new DirectoryInfo(directory));
+
+            // Create the service
+            return new SearchEngineService(dir, analizer);
+        }
+
+        #region Private Properties & Constructor
+
+        private readonly Directory _directory;
+        private readonly Analyzer _analyzer;
+        private IndexWriter _writer;
+
+        private const string Categories = "Categories";
+        private const string Silouhettes = "Silouhettes";
+        private const string Colors = "Colors";
+        private const string Fabrics = "Fabrics";
+        private const string Seasons = "Seasons";
+        private const string EventTypes = "EventTypes";
+        private const string Tags = "Tags";
+        private const string Entryid = "Entryid";
+        private const string FlavorId = "FlavorId";
+        private const string CreatedByMe = "CreatedByMe";
+        private const string MyRating = "MyRating";
+        private const string FriendRating = "FriendRating";
+        private const string EditorRating = "EditorRating";
+        private const string IndexDirectory = "IndexDirectory";
+
+        private static readonly ILog Log = log4net.LogManager.GetLogger(typeof(SearchEngineService).Namespace);
+        private bool _disposed;
+
+        public SearchEngineService(Directory directory, Analyzer analyzer)
+        {
+            _directory = directory;
+            _analyzer = analyzer;
+        }
+
+        #endregion
+
+        #region Helper Methods
+
+        private void DoWriterAction(Action<IndexWriter> action)
+        {
+            EnsureIndexWriter();
+            action(_writer);
+        }
+
+        private T DoWriterAction<T>(Func<IndexWriter, T> action)
+        {
+            EnsureIndexWriter();
+            return action(_writer);
+        }
+
+        void EnsureIndexWriter()
+        {
+            if (_writer == null)
+            {
+                if (IndexWriter.IsLocked(_directory))
+                {
+                    Log.Error("Something left a lock in the index folder: deleting it");
+                    IndexWriter.Unlock(_directory);
+                    Log.Info("Lock Deleted... can proceed");
+                }
+
+                _writer = new IndexWriter(_directory, _analyzer, IndexWriter.MaxFieldLength.UNLIMITED);
+                _writer.SetMergePolicy(new LogDocMergePolicy(_writer));
+                _writer.SetRAMBufferSizeMB(300);
+            }
+        }
+
+        private IndexSearcher _searcher = null;
+        private IndexSearcher Searcher
+        {
+            get {
+                if (_searcher == null)
+                    _searcher = new IndexSearcher(_directory, true);
+
+                return _searcher;
+            }
+        }
+
+        #endregion
+
+        #region Add Items
+
+        public IEnumerable<IndexingError> AddEntry(SearchEngineEntry post)
+        {
+            return AddEntries(new[] { post }, false);
+        }
+
+        public IEnumerable<IndexingError> AddEntries(IEnumerable<SearchEngineEntry> posts)
+        {
+            return AddEntries(posts, true);
+        }
+
+        public IEnumerable<IndexingError> AddEntries(IEnumerable<SearchEngineEntry> posts, bool optimize)
+        {
+            IList<IndexingError> errors = new List<IndexingError>();
+            foreach (var post in posts)
+            {
+                ExecuteRemovePost(post.EntryId);
+                try
+                {
+                    var currentPost = post;
+                    DoWriterAction(writer => writer.AddDocument(CreateDocument(currentPost)));
+                }
+                catch (Exception ex)
+                {
+                    errors.Add(new IndexingError(post, ex));
+                }
+            }
+
+            DoWriterAction(writer =>
+            {
+                writer.Commit();
+
+                if (optimize)
+                {
+                    writer.Optimize();
+                }
+            });
+
+            return errors;
+        }
+
+        #endregion
+
+        #region Remove Item
+
+        public void RemovePost(int postId)
+        {
+            ExecuteRemovePost(postId);
+            DoWriterAction(writer => writer.Commit());
+        }
+
+        private void ExecuteRemovePost(int entryId)
+        {
+            Query searchQuery = GetIdSearchQuery(entryId);
+            DoWriterAction(writer => writer.DeleteDocuments(searchQuery));
+        }
+
+        #endregion
+
+        #region Count of records in the index
+
+        public int GetTotalIndexedEntryCount()
+        {
+            return DoWriterAction(writer => writer.GetReader().NumDocs());
+        }
+
+        #endregion
+
+        #region Document and Search Result Creation
+
+        protected virtual Document CreateDocument(SearchEngineEntry post)
+        {
+            var doc = new Document();
+
+            var field = new Field(Entryid,
+                NumericUtils.IntToPrefixCoded(post.EntryId),
+                Field.Store.YES,
+                Field.Index.NOT_ANALYZED,
+                Field.TermVector.NO);
+            doc.Add(field);
+
+            field = new Field(Categories, post.Categories, Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.YES);
+            doc.Add(field);
+
+            field = new Field(Colors, post.Colors, Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.YES);
+            doc.Add(field);
+
+            field = new Field(Silouhettes, post.Silouhettes, Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.YES);
+            doc.Add(field);
+
+            field = new Field(Fabrics, post.Fabrics, Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.YES);
+            doc.Add(field);
+
+            field = new Field(Seasons, post.Seasons, Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.YES);
+            doc.Add(field);
+
+            field = new Field(EventTypes, post.EventTypes, Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.YES);
+            doc.Add(field);
+
+            field = new Field(Tags, post.Tags, Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.YES);
+            doc.Add(field);
+
+            // Boolean field just 1/0 on a text field
+            field = new Field(CreatedByMe,
+                Convert.ToInt32(post.CreatedByMe).ToString(),
+                Field.Store.NO,
+                Field.Index.NOT_ANALYZED,
+                Field.TermVector.NO);
+            doc.Add(field);
+
+            NumericField fieldNumber = new NumericField(FlavorId).SetIntValue(post.FlavorId);
+            doc.Add(fieldNumber);
+
+            fieldNumber = new NumericField(MyRating).SetIntValue(post.MyRating);
+            doc.Add(fieldNumber);
+
+            fieldNumber = new NumericField(EditorRating).SetIntValue(post.EditorRating);
+            doc.Add(fieldNumber);
+
+            fieldNumber = new NumericField(FriendRating).SetIntValue(post.FriendRating);
+            doc.Add(fieldNumber);
+
+            return doc;
+        }
+
+        protected virtual SearchEngineResult CreateSearchResult(Document doc, float score)
+        {
+            var result = new SearchEngineResult
+            {
+                EntryId = NumericUtils.PrefixCodedToInt(doc.Get(Entryid))
+            };
+
+            return result;
+        }
+
+        #endregion
+
+        #region Search Methods
+
+        private static Query GetIdSearchQuery(int id)
+        {
+            return new TermQuery(new Term(Entryid, NumericUtils.IntToPrefixCoded(id)));
+        }
+
+        public SearchEngineResponse RelatedContents(int entryId, int max, int blogId)
+        {
+            var list = new List<SearchEngineResult>();
+
+            //First look for the original doc
+            Query query = GetIdSearchQuery(entryId);
+            TopDocs hits = Searcher.Search(query, max);
+            if (hits.scoreDocs.Length <= 0)
+            {
+                return new SearchEngineResponse { TotalCount = hits.totalHits, Results = list };
+            }
+
+            int docNum = hits.scoreDocs[0].doc;
+
+            //Setup MoreLikeThis searcher
+            var reader = DoWriterAction(w => w.GetReader());
+            var mlt = new MoreLikeThis(reader);
+            mlt.SetAnalyzer(_analyzer);
+            mlt.SetFieldNames(new[] { Categories, Silouhettes, Tags });
+
+            var moreResultsQuery = mlt.Like(docNum);
+            return PerformQuery(list, moreResultsQuery, 0, max + 1, blogId, entryId);
+        }
+
+
+        /// <summary>
+        /// Search in the index using the following filters.
+        /// </summary>
+        /// <param name="queryString">Words to search for (ALL)</param>
+        /// <param name="start">Start record to retrieve (zero based)</param>
+        /// <param name="max">Amount of records to receive from the start index number.</param>
+        /// <param name="flavorId">Flavor to filter (can be null)</param>
+        /// <param name="createdByMe">Filter created by me records (can be null)</param>
+        /// <param name="sortField">Sort Field</param>
+        /// <param name="isDescending">Mark if sorting in descending order</param>
+        /// <returns>A SearchEngineResponse object containing the total of records and found items</returns>
+        public SearchEngineResponse Search(SearchParameters parameters, int start, int max, string sortField, bool isDescending)
+        {
+            try
+            {
+                if (parameters.Seasons == null)
+                    parameters.Seasons = "fall winter spring summer".Split(' ');
+                var list = new List<SearchEngineResult>();
+                Query bodyQuery = null;
+
+                if (!String.IsNullOrEmpty(parameters.FreeText))
+                {
+                    QueryParser parser = new MultiFieldQueryParser(Lucene.Net.Util.Version.LUCENE_29, new string[] { Categories, Silouhettes, Colors, Fabrics, Tags, EventTypes }, _analyzer);
+                    parser.SetDefaultOperator(QueryParser.Operator.AND);
+                    if (!string.IsNullOrEmpty(parameters.FreeText.Trim()))
+                        bodyQuery = parser.Parse(parameters.FreeText);
+                }
+
+                return PerformQuery(list, bodyQuery, start, max, -1, -1, parameters, sortField, isDescending);
+            }
+            catch(Lucene.Net.Store.NoSuchDirectoryException)
+            {
+                return new SearchEngineResponse { TotalCount = 0, Results = new List<SearchEngineResult>() };
+            }
+        }
+
+        private SearchEngineResponse PerformQuery(ICollection<SearchEngineResult> list, Query queryOrig, int start, int max, int blogId, int entryId)
+        {
+            return PerformQuery(list, queryOrig, start, max, blogId, entryId, null, null, false);
+        }
+
+        private Query GetIntRangeQuery(string field, int fixValue)
+        {
+            return GetIntRangeQuery(field, fixValue, fixValue);
+        }
+
+        private Query GetIntRangeQuery(string field, int from, int to)
+        {
+            return NumericRangeQuery.NewIntRange(field, from, to, true, true);
+        }
+
+        private SearchEngineResponse PerformQuery(ICollection<SearchEngineResult> list, Query queryOrig, int start, int max, int blogId, int entryId, SearchParameters parameters, string sortField, bool isDescending)
+        {
+            var query = new BooleanQuery();
+            if(queryOrig != null)
+                query.Add(queryOrig, BooleanClause.Occur.MUST);
+
+            if (parameters != null)
+            {
+                if (parameters.CreatedByMe.HasValue)
+                    query.Add(new TermQuery(new Term(CreatedByMe, Convert.ToInt32(parameters.CreatedByMe).ToString())), BooleanClause.Occur.MUST);
+
+                if (parameters.FlavorId.HasValue)
+                    query.Add(GetIntRangeQuery(FlavorId, parameters.FlavorId.Value), BooleanClause.Occur.MUST);
+
+                if (parameters.IsRatedByMe.HasValue && parameters.IsRatedByMe.Value)
+                    query.Add(GetIntRangeQuery(MyRating, 1, 5), BooleanClause.Occur.MUST);
+
+                if (parameters.IsRatedByFriends.HasValue && parameters.IsRatedByFriends.Value)
+                    query.Add(GetIntRangeQuery(FriendRating, 1, 5), BooleanClause.Occur.MUST);
+
+                if (parameters.MyRating.HasValue)
+                    query.Add(GetIntRangeQuery(MyRating, parameters.MyRating.Value), BooleanClause.Occur.MUST);
+
+                if (parameters.FriendRating.HasValue)
+                    query.Add(GetIntRangeQuery(FriendRating, parameters.FriendRating.Value), BooleanClause.Occur.MUST);
+
+                if (parameters.TrendKeywords != null && parameters.TrendKeywords.Length > 0)
+                {
+                    // Create a query to filter by multiple fields one phrase is required to appear.
+                    QueryParser parser = new MultiFieldQueryParser(Lucene.Net.Util.Version.LUCENE_29, new string[] { Categories, Silouhettes, Colors, Fabrics, Seasons, EventTypes }, _analyzer);
+                    parser.SetDefaultOperator(QueryParser.Operator.OR);
+                    Query keywordsQuery = parser.Parse(string.Join(" ", parameters.TrendKeywords));
+
+                    query.Add(keywordsQuery, BooleanClause.Occur.MUST);
+                }
+
+                if (parameters.Seasons != null && parameters.Seasons.Length > 0)
+                {
+                    QueryParser parser = new QueryParser(Lucene.Net.Util.Version.LUCENE_29, Seasons, _analyzer);
+                    parser.SetDefaultOperator(QueryParser.Operator.OR);
+                    query.Add(parser.Parse(string.Join(" ", parameters.Seasons)), BooleanClause.Occur.MUST);
+                }
+
+                //// Query to filter only by the colors field (maybe is faster or useful)
+                if (!String.IsNullOrEmpty(parameters.Color))
+                    query.Add(new TermQuery(new Term(Colors, parameters.Color)), BooleanClause.Occur.MUST);
+            }
+
+            Hits hits;
+            if (sortField != null)
+            {
+                var sortTerm = new SortField(sortField, SortField.INT, isDescending);
+                var sort = new Sort(sortTerm);
+                hits = Searcher.Search(query, null, sort);
+            }
+            else
+                hits = Searcher.Search(query);
+
+            int length = hits.Length();
+            int resultsAdded = 0;
+
+            if (start < length)
+            {
+                for (int i = start; i < length && resultsAdded < max; i++)
+                {
+                    SearchEngineResult result = CreateSearchResult(hits.Doc(i), 0);
+                    list.Add(result);
+                    resultsAdded++;
+                }
+            }
+
+            return new SearchEngineResponse { TotalCount = length, Results = list };
+        }
+
+        #endregion
+
+        #region Dispose
+        
+        ~SearchEngineService()
+        {
+            Dispose();
+        }
+
+        public void Dispose()
+        {
+            if (!_disposed)
+            {
+                var writer = _writer;
+
+                if (writer != null)
+                {
+                    try
+                    {
+                        writer.Close();
+                    }
+                    catch (ObjectDisposedException e)
+                    {
+                        Log.Error("Exception while disposing SearchEngineService", e);
+                    }
+                    _writer = null;
+                }
+
+                var directory = _directory;
+                if (directory != null)
+                {
+                    try
+                    {
+                        directory.Close();
+                    }
+                    catch (ObjectDisposedException e)
+                    {
+                        Log.Error("Exception while disposing SearchEngineService", e);
+                    }
+                }
+
+                _disposed = true;
+            }
+
+            if (_searcher != null)
+                _searcher.Close();
+
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion
+    }
+}

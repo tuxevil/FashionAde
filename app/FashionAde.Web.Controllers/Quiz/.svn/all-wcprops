@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/nybble/!svn/ver/5532/FashionAde/trunk/app/FashionAde.Web.Controllers/Quiz
+END
+QuizController.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/nybble/!svn/ver/5532/FashionAde/trunk/app/FashionAde.Web.Controllers/Quiz/QuizController.cs
+END
+FlavorQuizController.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/nybble/!svn/ver/4668/FashionAde/trunk/app/FashionAde.Web.Controllers/Quiz/FlavorQuizController.cs
+END

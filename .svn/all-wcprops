@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/nybble/!svn/ver/7408/FashionAde/trunk
+END
+FashionAde.FxCop
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/nybble/!svn/ver/5155/FashionAde/trunk/FashionAde.FxCop
+END
+FashionAde.build
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/nybble/!svn/ver/4300/FashionAde/trunk/FashionAde.build
+END
+db.01.00.0002.sql
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/nybble/!svn/ver/5181/FashionAde/trunk/db.01.00.0002.sql
+END
+CommonAssemblyInfo.cs
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/nybble/!svn/ver/7091/FashionAde/trunk/CommonAssemblyInfo.cs
+END
+go-qa.bat
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/nybble/!svn/ver/5182/FashionAde/trunk/go-qa.bat
+END
+deploy.build
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/nybble/!svn/ver/7212/FashionAde/trunk/deploy.build
+END
+go.bat
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/nybble/!svn/ver/4438/FashionAde/trunk/go.bat
+END
+move-qa.bat
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/nybble/!svn/ver/7096/FashionAde/trunk/move-qa.bat
+END
+FashionAde.sln
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/nybble/!svn/ver/6038/FashionAde/trunk/FashionAde.sln
+END
+go-prd.bat
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/nybble/!svn/ver/5182/FashionAde/trunk/go-prd.bat
+END

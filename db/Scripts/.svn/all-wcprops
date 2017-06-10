@@ -1,0 +1,251 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/nybble/!svn/ver/7315/FashionAde/trunk/db/Scripts
+END
+baseline.sql
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/nybble/!svn/ver/5163/FashionAde/trunk/db/Scripts/baseline.sql
+END
+mig updaters.sql
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/nybble/!svn/ver/7095/FashionAde/trunk/db/Scripts/mig%20updaters.sql
+END
+post.uspRemoveGarmentFromOutfits.sql
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/nybble/!svn/ver/7162/FashionAde/trunk/db/Scripts/post.uspRemoveGarmentFromOutfits.sql
+END
+Scripts.dbp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/nybble/!svn/ver/7162/FashionAde/trunk/db/Scripts/Scripts.dbp
+END
+post.uspUpdateOutfitStatus.sql
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/nybble/!svn/ver/7162/FashionAde/trunk/db/Scripts/post.uspUpdateOutfitStatus.sql
+END
+setup.sql
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/nybble/!svn/ver/5112/FashionAde/trunk/db/Scripts/setup.sql
+END
+db.01.00.0010.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5463/FashionAde/trunk/db/Scripts/db.01.00.0010.sql
+END
+db.01.00.0011.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5488/FashionAde/trunk/db/Scripts/db.01.00.0011.sql
+END
+post.uspUpdateOutfitUpdaterStatusPerSeason.sql
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/nybble/!svn/ver/7162/FashionAde/trunk/db/Scripts/post.uspUpdateOutfitUpdaterStatusPerSeason.sql
+END
+db.01.00.0012.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5510/FashionAde/trunk/db/Scripts/db.01.00.0012.sql
+END
+db.01.00.0013.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5511/FashionAde/trunk/db/Scripts/db.01.00.0013.sql
+END
+db.01.00.0014.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5500/FashionAde/trunk/db/Scripts/db.01.00.0014.sql
+END
+db.01.00.0015.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5517/FashionAde/trunk/db/Scripts/db.01.00.0015.sql
+END
+db.01.00.0016.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5635/FashionAde/trunk/db/Scripts/db.01.00.0016.sql
+END
+db.01.00.0017.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5644/FashionAde/trunk/db/Scripts/db.01.00.0017.sql
+END
+post.uspProcessPendingCloset.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/nybble/!svn/ver/6211/FashionAde/trunk/db/Scripts/post.uspProcessPendingCloset.sql
+END
+db.01.00.0018.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5683/FashionAde/trunk/db/Scripts/db.01.00.0018.sql
+END
+db.01.00.0019.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/7095/FashionAde/trunk/db/Scripts/db.01.00.0019.sql
+END
+uspMembershipUsersCount.sql
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/nybble/!svn/ver/5570/FashionAde/trunk/db/Scripts/uspMembershipUsersCount.sql
+END
+post.views.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/nybble/!svn/ver/5390/FashionAde/trunk/db/Scripts/post.views.sql
+END
+post.uspUpdateOutfitUpdaterStatus.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/nybble/!svn/ver/7162/FashionAde/trunk/db/Scripts/post.uspUpdateOutfitUpdaterStatus.sql
+END
+post.uspMigrateInvitedUser.sql
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/nybble/!svn/ver/5114/FashionAde/trunk/db/Scripts/post.uspMigrateInvitedUser.sql
+END
+post.uspInsertTrackingUpdatersInfo.sql
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/nybble/!svn/ver/5412/FashionAde/trunk/db/Scripts/post.uspInsertTrackingUpdatersInfo.sql
+END
+post.uspFindMembershipUsers.sql
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/nybble/!svn/ver/5571/FashionAde/trunk/db/Scripts/post.uspFindMembershipUsers.sql
+END
+post.uspUpdatePrecombinationStatus.sql
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/nybble/!svn/ver/7162/FashionAde/trunk/db/Scripts/post.uspUpdatePrecombinationStatus.sql
+END
+post.uspFindBestRatedClosetOutfit.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/nybble/!svn/ver/7162/FashionAde/trunk/db/Scripts/post.uspFindBestRatedClosetOutfit.sql
+END
+db.01.00.0001.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5109/FashionAde/trunk/db/Scripts/db.01.00.0001.sql
+END
+db.01.00.0020.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/7157/FashionAde/trunk/db/Scripts/db.01.00.0020.sql
+END
+db.01.00.0002.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5187/FashionAde/trunk/db/Scripts/db.01.00.0002.sql
+END
+db.01.00.0021.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/7283/FashionAde/trunk/db/Scripts/db.01.00.0021.sql
+END
+db.01.00.0003.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5208/FashionAde/trunk/db/Scripts/db.01.00.0003.sql
+END
+db.01.00.0004.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5475/FashionAde/trunk/db/Scripts/db.01.00.0004.sql
+END
+post.uspFindAllMembershipUsersSorted.sql
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/nybble/!svn/ver/5570/FashionAde/trunk/db/Scripts/post.uspFindAllMembershipUsersSorted.sql
+END
+db.01.00.0022.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/7283/FashionAde/trunk/db/Scripts/db.01.00.0022.sql
+END
+db.01.00.0005.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5299/FashionAde/trunk/db/Scripts/db.01.00.0005.sql
+END
+db.01.00.0023.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/7315/FashionAde/trunk/db/Scripts/db.01.00.0023.sql
+END
+db.01.00.0006.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5373/FashionAde/trunk/db/Scripts/db.01.00.0006.sql
+END
+db.01.00.0007.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5388/FashionAde/trunk/db/Scripts/db.01.00.0007.sql
+END
+db.01.00.0008.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5401/FashionAde/trunk/db/Scripts/db.01.00.0008.sql
+END
+db.01.00.0009.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nybble/!svn/ver/5414/FashionAde/trunk/db/Scripts/db.01.00.0009.sql
+END
+post.uspInsertTrackingInfo.sql
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/nybble/!svn/ver/5458/FashionAde/trunk/db/Scripts/post.uspInsertTrackingInfo.sql
+END
